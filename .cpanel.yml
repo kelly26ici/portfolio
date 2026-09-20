@@ -1,9 +1,9 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/rexkelly/public_html
+    - export DEPLOYPATH=/home/rexkelly/portfolio
+    - /bin/mkdir -p $DEPLOYPATH
     - /bin/cp -R * $DEPLOYPATH/
-    - /bin/cp -R .next $DEPLOYPATH/ 2>/dev/null || true
     - /bin/cp .env $DEPLOYPATH/ 2>/dev/null || true
     - /bin/cp .env.local $DEPLOYPATH/ 2>/dev/null || true
     - cd $DEPLOYPATH && /usr/local/bin/npm install --legacy-peer-deps 2>/dev/null || cd $DEPLOYPATH && npm install --legacy-peer-deps
