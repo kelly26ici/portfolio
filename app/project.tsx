@@ -26,20 +26,20 @@ export default function Project() {
     <>
       <section
         id="projects"
-        className="w-full max-w-7xl mx-auto py-24 md:py-32 cursor-default bg-background relative border-t border-text-secondary/10"
+        className="w-full max-w-7xl mx-auto py-24 md:py-32 cursor-default bg-background relative border-t border-surface-border dark:border-charcoal"
       >
         <FadeDown>
           <div className="max-w-7xl mx-auto px-6 md:px-12 mb-16 md:mb-20 w-full text-left">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-              <h2 className="text-sm font-bold tracking-[0.2em] text-emerald-500 uppercase">
+            <div className="flex items-center gap-2.5 mb-3">
+              <span className="w-2.5 h-2.5 rounded-full bg-gold shadow-[0_0_8px_#D4AF37]"></span>
+              <h2 className="font-coconat text-xs font-bold tracking-[0.25em] text-gold uppercase">
                 Production Systems & Solutions
               </h2>
             </div>
-            <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-text-primary tracking-tighter">
+            <h3 className="font-cinzel text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary tracking-tight">
               My Featured Projects
             </h3>
-            <p className="text-text-secondary text-base max-w-3xl mt-4 font-medium">
+            <p className="font-forum text-text-secondary text-base md:text-lg max-w-3xl mt-4 font-normal leading-relaxed">
               A selection of production-grade AI systems, multi-agent architectures, RAG pipelines,
               and real-world API & payment integrations that I have engineered for clients and enterprise deployments.
             </p>
@@ -50,33 +50,33 @@ export default function Project() {
         <div className="hidden lg:grid max-w-7xl mx-auto grid-cols-3 gap-8 px-6 md:px-12">
           {projectList.map((project, index) => (
             <FadeUp key={`desktop-${index}`}>
-              <GlareHover className="group flex flex-col h-full bg-background border border-text-secondary/15 hover:border-emerald-500/50 rounded-2xl overflow-hidden transition-all duration-500 shadow-sm hover:shadow-2xl hover:-translate-y-1">
-                {/* Project Header Banner / Architecture Preview */}
-                <div className={`relative overflow-hidden aspect-[16/10] ${project.accentGradient} p-6 flex flex-col justify-between border-b border-text-secondary/10`}>
+              <GlareHover className="group flex flex-col h-full bg-surface dark:bg-deep-onyx border border-surface-border dark:border-charcoal hover:border-gold/60 rounded-2xl overflow-hidden transition-all duration-500 shadow-sm hover:shadow-[0_8px_30px_rgba(212,175,55,0.18)] hover:-translate-y-1">
+                {/* Project Header Banner */}
+                <div className={`relative overflow-hidden aspect-[16/10] ${project.accentGradient} p-6 flex flex-col justify-between border-b border-surface-border dark:border-charcoal`}>
                   <div className="flex justify-between items-start z-10">
-                    <span className="text-[11px] font-mono font-black uppercase tracking-widest px-2.5 py-1 rounded-md bg-background/90 text-text-primary border border-text-secondary/20 backdrop-blur-md">
+                    <span className="font-coconat text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md bg-deep-onyx/80 text-gold border border-gold/30 backdrop-blur-md">
                       {project.badge}
                     </span>
-                    <span className="text-xs font-mono font-bold text-text-secondary bg-background/80 px-2 py-0.5 rounded-full border border-text-secondary/15">
+                    <span className="font-messapia text-xs font-bold text-champagne bg-deep-onyx/80 px-2.5 py-0.5 rounded-full border border-charcoal">
                       {String(project.index + 1).padStart(2, "0")}
                     </span>
                   </div>
 
                   <div className="z-10 mt-auto">
-                    <span className="text-[10px] font-mono font-bold text-emerald-400 block uppercase tracking-wider mb-1">
+                    <span className="font-coconat text-[10px] font-bold text-champagne block uppercase tracking-wider mb-1">
                       {project.category}
                     </span>
-                    <h4 className="text-xl font-black text-white tracking-tight drop-shadow-sm">
+                    <h4 className="font-ortica text-xl font-bold text-white tracking-tight drop-shadow-sm">
                       {project.title}
                     </h4>
                   </div>
 
                   {/* Ambient overlay grid */}
-                  <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:12px_12px] opacity-10 pointer-events-none"></div>
+                  <div className="absolute inset-0 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:12px_12px] opacity-10 pointer-events-none"></div>
                 </div>
 
                 <div className="p-6 flex flex-col flex-grow relative">
-                  <p className="text-sm text-text-secondary font-medium leading-relaxed mb-6 flex-grow line-clamp-3">
+                  <p className="font-forum text-sm text-text-secondary leading-relaxed mb-6 flex-grow line-clamp-3">
                     {project.shortDescription}
                   </p>
 
@@ -85,33 +85,33 @@ export default function Project() {
                     {project.tech.slice(0, 4).map((tech, i) => (
                       <span
                         key={i}
-                        className="text-[10px] font-mono font-bold bg-thirdary/60 text-text-primary px-2 py-1 rounded-md border border-text-secondary/10"
+                        className="font-coconat text-[10px] font-bold bg-surface-raised dark:bg-charcoal/50 text-text-primary px-2.5 py-1 rounded-md border border-surface-border dark:border-charcoal"
                       >
                         {tech}
                       </span>
                     ))}
                     {project.tech.length > 4 && (
-                      <span className="text-[10px] font-mono font-bold bg-thirdary/60 text-text-secondary px-2 py-1 rounded-md border border-text-secondary/10">
+                      <span className="font-coconat text-[10px] font-bold bg-surface-raised dark:bg-charcoal/50 text-gold px-2.5 py-1 rounded-md border border-surface-border dark:border-charcoal">
                         +{project.tech.length - 4}
                       </span>
                     )}
                   </div>
 
-                  <div className="flex items-center justify-between mt-auto pt-4 border-t border-text-secondary/10">
+                  <div className="flex items-center justify-between mt-auto pt-4 border-t border-surface-border dark:border-charcoal">
                     <button
-                      className="text-xs font-bold tracking-[0.15em] uppercase text-emerald-500 flex items-center gap-2 group/btn cursor-pointer hover:text-emerald-400 transition-colors"
+                      className="font-coconat text-xs font-bold tracking-wider uppercase text-gold flex items-center gap-2 group/btn cursor-pointer hover:text-gold-hover transition-colors"
                       onClick={() => setIsOpen(project.index)}
                     >
                       Architecture & Details
-                      <span className="w-6 h-[2px] bg-emerald-500 group-hover/btn:w-10 transition-all duration-300"></span>
+                      <span className="w-6 h-[2px] bg-gold group-hover/btn:w-10 transition-all duration-300"></span>
                     </button>
 
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 border border-text-secondary/20 rounded-xl text-text-secondary hover:text-emerald-500 hover:border-emerald-500 transition-all duration-300"
-                      title="View GitHub Repository"
+                      className="p-2 border border-surface-border dark:border-charcoal rounded-xl text-text-secondary hover:text-gold hover:border-gold transition-all duration-300"
+                      title="View Project Link"
                     >
                       <svg
                         className="w-4 h-4"
@@ -137,30 +137,30 @@ export default function Project() {
                   key={`mobile1-${index}`}
                   className="w-[85vw] sm:w-[380px] flex-shrink-0"
                 >
-                  <GlareHover className="group flex flex-col h-full bg-background border border-text-secondary/15 rounded-2xl overflow-hidden shadow-sm">
+                  <GlareHover className="group flex flex-col h-full bg-surface dark:bg-deep-onyx border border-surface-border dark:border-charcoal rounded-2xl overflow-hidden shadow-sm">
                     <div className={`relative aspect-[16/10] ${project.accentGradient} p-6 flex flex-col justify-between`}>
                       <div className="flex justify-between items-start">
-                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-background/90 text-text-primary">
+                        <span className="font-coconat text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-deep-onyx/80 text-gold border border-gold/30">
                           {project.badge}
                         </span>
-                        <span className="text-xs font-mono text-text-secondary bg-background/80 px-2 py-0.5 rounded-full">
+                        <span className="font-messapia text-xs text-champagne bg-deep-onyx/80 px-2 py-0.5 rounded-full border border-charcoal">
                           {String(project.index + 1).padStart(2, "0")}
                         </span>
                       </div>
                       <div className="mt-auto">
-                        <span className="text-[10px] font-mono text-emerald-400 font-bold block uppercase">
+                        <span className="font-coconat text-[10px] text-champagne font-bold block uppercase">
                           {project.category}
                         </span>
-                        <h4 className="text-lg font-black text-white">{project.title}</h4>
+                        <h4 className="font-ortica text-lg font-bold text-white">{project.title}</h4>
                       </div>
                     </div>
 
                     <div className="p-5 flex flex-col flex-grow">
-                      <p className="text-xs text-text-secondary font-medium leading-relaxed mb-4 line-clamp-3">
+                      <p className="font-forum text-xs text-text-secondary leading-relaxed mb-4 line-clamp-3">
                         {project.shortDescription}
                       </p>
                       <button
-                        className="mt-auto text-xs font-bold text-emerald-500 uppercase tracking-wider text-left pt-2 border-t border-text-secondary/10"
+                        className="mt-auto font-coconat text-xs font-bold text-gold uppercase tracking-wider text-left pt-2 border-t border-surface-border dark:border-charcoal"
                         onClick={() => setIsOpen(project.index)}
                       >
                         View Architecture &rarr;
@@ -177,30 +177,30 @@ export default function Project() {
                   key={`mobile2-${index}`}
                   className="w-[85vw] sm:w-[380px] flex-shrink-0"
                 >
-                  <GlareHover className="group flex flex-col h-full bg-background border border-text-secondary/15 rounded-2xl overflow-hidden shadow-sm">
+                  <GlareHover className="group flex flex-col h-full bg-surface dark:bg-deep-onyx border border-surface-border dark:border-charcoal rounded-2xl overflow-hidden shadow-sm">
                     <div className={`relative aspect-[16/10] ${project.accentGradient} p-6 flex flex-col justify-between`}>
                       <div className="flex justify-between items-start">
-                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-background/90 text-text-primary">
+                        <span className="font-coconat text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-deep-onyx/80 text-gold border border-gold/30">
                           {project.badge}
                         </span>
-                        <span className="text-xs font-mono text-text-secondary bg-background/80 px-2 py-0.5 rounded-full">
+                        <span className="font-messapia text-xs text-champagne bg-deep-onyx/80 px-2 py-0.5 rounded-full border border-charcoal">
                           {String(project.index + 1).padStart(2, "0")}
                         </span>
                       </div>
                       <div className="mt-auto">
-                        <span className="text-[10px] font-mono text-emerald-400 font-bold block uppercase">
+                        <span className="font-coconat text-[10px] text-champagne font-bold block uppercase">
                           {project.category}
                         </span>
-                        <h4 className="text-lg font-black text-white">{project.title}</h4>
+                        <h4 className="font-ortica text-lg font-bold text-white">{project.title}</h4>
                       </div>
                     </div>
 
                     <div className="p-5 flex flex-col flex-grow">
-                      <p className="text-xs text-text-secondary font-medium leading-relaxed mb-4 line-clamp-3">
+                      <p className="font-forum text-xs text-text-secondary leading-relaxed mb-4 line-clamp-3">
                         {project.shortDescription}
                       </p>
                       <button
-                        className="mt-auto text-xs font-bold text-emerald-500 uppercase tracking-wider text-left pt-2 border-t border-text-secondary/10"
+                        className="mt-auto font-coconat text-xs font-bold text-gold uppercase tracking-wider text-left pt-2 border-t border-surface-border dark:border-charcoal"
                         onClick={() => setIsOpen(project.index)}
                       >
                         View Architecture &rarr;
@@ -220,11 +220,11 @@ export default function Project() {
               href="https://github.com/kelly26ici"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-background border border-text-secondary/20 text-text-primary hover:border-emerald-500 hover:text-emerald-500 rounded-xl font-bold tracking-widest text-sm uppercase transition-all duration-300 ease-out group hover:-translate-y-1 shadow-sm hover:shadow-xl"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-surface dark:bg-deep-onyx border border-surface-border dark:border-charcoal text-text-primary hover:border-gold hover:text-gold rounded-xl font-coconat font-bold tracking-widest text-xs uppercase transition-all duration-300 ease-out group hover:-translate-y-1 shadow-sm hover:shadow-[0_4px_25px_rgba(212,175,55,0.2)]"
             >
               <span>Explore All Repositories on GitHub</span>
               <svg
-                className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -232,7 +232,7 @@ export default function Project() {
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth="2"
+                  strokeWidth="2.5"
                   d="M14 5l7 7m0 0l-7 7m7-7H3"
                 />
               </svg>
@@ -250,7 +250,7 @@ export default function Project() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
-                className="absolute inset-0 bg-background/85 backdrop-blur-md"
+                className="absolute inset-0 bg-black/85 backdrop-blur-md"
                 onClick={() => setIsOpen(null)}
               />
 
@@ -260,21 +260,22 @@ export default function Project() {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.96, y: 15 }}
                 transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                className="bg-background border border-text-secondary/20 rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col shadow-2xl relative z-10"
+                className="bg-surface dark:bg-deep-onyx border border-surface-border dark:border-charcoal rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col shadow-2xl relative z-10"
               >
                 {/* Modal Header */}
-                <div className="flex justify-between items-center p-6 border-b border-text-secondary/10 bg-thirdary/20">
+                <div className="flex justify-between items-center p-6 border-b border-surface-border dark:border-charcoal bg-surface-raised dark:bg-charcoal/30">
                   <div>
-                    <span className="text-[11px] font-mono text-emerald-500 font-bold uppercase tracking-wider block mb-1">
+                    <span className="font-coconat text-[11px] text-gold font-bold uppercase tracking-wider block mb-1">
                       {activeProject.category}
                     </span>
-                    <h4 className="text-2xl font-black text-text-primary tracking-tight">
+                    <h4 className="font-ortica text-2xl font-bold text-text-primary tracking-tight">
                       {activeProject.title}
                     </h4>
                   </div>
                   <button
-                    className="text-text-secondary hover:text-text-primary transition-colors p-2 bg-text-secondary/5 rounded-full"
+                    className="text-text-secondary hover:text-gold transition-colors p-2 bg-charcoal/10 dark:bg-charcoal/40 rounded-full"
                     onClick={() => setIsOpen(null)}
+                    aria-label="Close modal"
                   >
                     <svg
                       className="w-5 h-5 flex-shrink-0"
@@ -296,33 +297,33 @@ export default function Project() {
                 <div className="p-6 sm:p-8 overflow-y-auto flex-grow custom-scrollbar space-y-6">
                   {/* Overview */}
                   <div>
-                    <span className="text-xs font-bold tracking-widest text-text-secondary uppercase block mb-2 font-mono">
+                    <span className="font-messapia text-xs font-bold tracking-widest text-text-secondary uppercase block mb-2">
                       System Overview
                     </span>
-                    <p className="text-sm md:text-base text-text-secondary leading-relaxed font-medium">
+                    <p className="font-forum text-sm md:text-base text-text-secondary leading-relaxed font-normal">
                       {activeProject.longDescription}
                     </p>
                   </div>
 
                   {/* Architecture & Stack */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 p-4 rounded-2xl bg-thirdary/30 border border-text-secondary/10">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 p-4 rounded-2xl bg-surface-raised dark:bg-charcoal/30 border border-surface-border dark:border-charcoal">
                     <div>
-                      <span className="text-xs font-bold tracking-widest text-text-secondary uppercase block mb-2 font-mono">
+                      <span className="font-messapia text-xs font-bold tracking-widest text-text-secondary uppercase block mb-2">
                         Deployment & Role
                       </span>
-                      <span className="text-xs font-mono font-bold text-text-primary bg-background px-3 py-1.5 rounded-lg border border-text-secondary/10 inline-block">
+                      <span className="font-coconat text-xs font-bold text-text-primary bg-surface dark:bg-deep-onyx px-3 py-1.5 rounded-lg border border-surface-border dark:border-charcoal inline-block">
                         {activeProject.deployment}
                       </span>
                     </div>
                     <div>
-                      <span className="text-xs font-bold tracking-widest text-text-secondary uppercase block mb-2 font-mono">
+                      <span className="font-messapia text-xs font-bold tracking-widest text-text-secondary uppercase block mb-2">
                         Technology Stack
                       </span>
                       <div className="flex flex-wrap gap-1.5">
                         {activeProject.tech.map((tech, i) => (
                           <span
                             key={i}
-                            className="text-[11px] font-mono font-bold bg-background text-emerald-600 dark:text-emerald-400 px-2.5 py-1 rounded-md border border-text-secondary/10"
+                            className="font-coconat text-[11px] font-bold bg-surface dark:bg-deep-onyx text-gold-hover dark:text-gold px-2.5 py-1 rounded-md border border-surface-border dark:border-charcoal"
                           >
                             {tech}
                           </span>
@@ -333,16 +334,16 @@ export default function Project() {
 
                   {/* Key Architecture Features */}
                   <div>
-                    <span className="text-xs font-bold tracking-widest text-text-secondary uppercase block mb-3 font-mono">
+                    <span className="font-messapia text-xs font-bold tracking-widest text-text-secondary uppercase block mb-3">
                       Key Engineering Deliverables
                     </span>
                     <ul className="space-y-2.5">
                       {activeProject.features.map((feature, i) => (
                         <li
                           key={i}
-                          className="flex items-start gap-3 p-3.5 rounded-xl bg-thirdary/20 border border-text-secondary/5 text-sm font-medium text-text-primary"
+                          className="flex items-start gap-3 p-3.5 rounded-xl bg-surface-raised dark:bg-charcoal/20 border border-surface-border dark:border-charcoal/40 text-sm font-forum font-medium text-text-primary"
                         >
-                          <span className="text-emerald-500 font-bold mt-0.5">&#10003;</span>
+                          <span className="text-gold font-bold mt-0.5">&#10003;</span>
                           <span>{feature}</span>
                         </li>
                       ))}
@@ -351,12 +352,12 @@ export default function Project() {
                 </div>
 
                 {/* Modal Footer */}
-                <div className="p-6 border-t border-text-secondary/10 flex flex-col sm:flex-row gap-3 bg-background">
+                <div className="p-6 border-t border-surface-border dark:border-charcoal flex flex-col sm:flex-row gap-3 bg-surface dark:bg-deep-onyx">
                   <a
                     href={activeProject.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 flex justify-center items-center gap-2 text-center font-bold text-sm tracking-widest uppercase bg-text-primary text-background py-3.5 rounded-xl hover:-translate-y-0.5 transition-transform"
+                    className="flex-1 flex justify-center items-center gap-2 text-center font-coconat font-bold text-xs tracking-widest uppercase bg-gold hover:bg-gold-hover text-deep-onyx py-3.5 rounded-xl shadow-[0_4px_15px_rgba(212,175,55,0.3)] hover:-translate-y-0.5 transition-transform"
                   >
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
@@ -365,7 +366,7 @@ export default function Project() {
                   </a>
                   <button
                     onClick={() => setIsOpen(null)}
-                    className="px-6 py-3.5 border border-text-secondary/20 rounded-xl font-bold text-sm uppercase tracking-widest text-text-secondary hover:text-text-primary hover:border-text-secondary/40"
+                    className="px-6 py-3.5 border border-surface-border dark:border-charcoal rounded-xl font-coconat font-bold text-xs uppercase tracking-widest text-text-secondary hover:text-text-primary hover:border-gold transition-colors"
                   >
                     Close
                   </button>
@@ -385,7 +386,7 @@ const projectList = [
     title: "Samantha: WhatsApp AI Real Estate Assistant",
     category: "Conversational Agent & Integrations",
     badge: "Flagship Public Project",
-    accentGradient: "bg-gradient-to-br from-emerald-950 via-teal-900 to-slate-900",
+    accentGradient: "bg-gradient-to-br from-[#0F0F0F] via-[#0A3D82]/40 to-[#2C2C2C]",
     shortDescription:
       "I engineered Samantha as an autonomous WhatsApp real estate assistant built on WhatsApp Cloud API, combining property discovery, vector semantic search, customer conversational memory, and automated M-Pesa payments.",
     longDescription:
@@ -399,14 +400,14 @@ const projectList = [
       "Webhook architecture translating conversational bookings into business CRM lead tasks",
     ],
     tech: ["Python", "WhatsApp Cloud API", "LangChain/LangGraph", "Qdrant", "Safaricom M-Pesa", "Supabase", "Redis", "FastAPI"],
-    githubUrl: "https://github.com/kelly26ici",
+    githubUrl: "https://github.com/kelly26ici/portfolio",
   },
   {
     index: 1,
     title: "OmniAgent: Multi-Agent Workflow Engine",
     category: "Agentic Systems & Automation",
     badge: "Enterprise Orchestrator",
-    accentGradient: "bg-gradient-to-br from-blue-950 via-indigo-900 to-slate-900",
+    accentGradient: "bg-gradient-to-br from-[#0A3D82]/50 via-[#0F0F0F] to-[#2C2C2C]",
     shortDescription:
       "I architected this autonomous multi-agent orchestration platform utilizing LangGraph cyclic state machines, dynamic tool calling, and human-in-the-loop governance for enterprise workflows.",
     longDescription:
@@ -419,14 +420,14 @@ const projectList = [
       "Durable Redis state checkpointing allowing interrupted workflows to resume seamlessly",
     ],
     tech: ["Python", "LangGraph", "FastAPI", "Anthropic Claude", "OpenAI", "Redis", "Docker"],
-    githubUrl: "https://github.com/kelly26ici",
+    githubUrl: "https://github.com/kelly26ici/portfolio",
   },
   {
     index: 2,
     title: "CortexRAG: Hybrid Semantic Retrieval Engine",
     category: "Information Retrieval & RAG",
     badge: "High-Throughput RAG",
-    accentGradient: "bg-gradient-to-br from-purple-950 via-violet-900 to-slate-900",
+    accentGradient: "bg-gradient-to-br from-[#2C2C2C] via-[#0A3D82]/30 to-[#0F0F0F]",
     shortDescription:
       "I developed this production-grade hybrid semantic search and RAG engine combining dense vector embeddings, sparse BM25, cross-encoder reranking, and citation attribution.",
     longDescription:
@@ -439,14 +440,14 @@ const projectList = [
       "High-concurrency streaming REST API built with FastAPI and asynchronous workers",
     ],
     tech: ["PyTorch", "Hugging Face", "Qdrant", "Pinecone", "FAISS", "FastAPI", "Docker"],
-    githubUrl: "https://github.com/kelly26ici",
+    githubUrl: "https://github.com/kelly26ici/portfolio",
   },
   {
     index: 3,
     title: "TelePulse AI: Telegram Operations & Automation Bot",
     category: "Automation & Bot Engineering",
     badge: "Bot & Ops Engineering",
-    accentGradient: "bg-gradient-to-br from-cyan-950 via-teal-900 to-slate-900",
+    accentGradient: "bg-gradient-to-br from-[#0F0F0F] via-[#0A3D82]/50 to-[#2C2C2C]",
     shortDescription:
       "I engineered this high-throughput automated Telegram bot with Python and the Telegram Bot API for real-time customer triage, database query execution, and operations.",
     longDescription:
@@ -466,7 +467,7 @@ const projectList = [
     title: "DarajaPay AI: M-Pesa Reconciliation & Anomaly Engine",
     category: "Fintech & Integrations",
     badge: "Fintech Gateway",
-    accentGradient: "bg-gradient-to-br from-emerald-950 via-green-900 to-slate-900",
+    accentGradient: "bg-gradient-to-br from-[#0F0F0F] via-[#2C2C2C] to-[#0A3D82]/40",
     shortDescription:
       "I engineered this automated fintech gateway integrating Safaricom M-Pesa (Daraja API) with machine learning anomaly detection to streamline payment reconciliation and fraud alerts.",
     longDescription:
@@ -479,14 +480,14 @@ const projectList = [
       "Comprehensive audit trail with PostgreSQL and Redis caching for sub-second verification",
     ],
     tech: ["Python", "FastAPI", "scikit-learn", "XGBoost", "Safaricom Daraja API", "PostgreSQL", "Supabase"],
-    githubUrl: "https://github.com/kelly26ici",
+    githubUrl: "https://github.com/kelly26ici/portfolio",
   },
   {
     index: 5,
     title: "LocalLLM Nexus: Air-Gapped Model Serving Suite",
     category: "Model Serving & Edge AI",
     badge: "Privacy & Local AI",
-    accentGradient: "bg-gradient-to-br from-slate-950 via-zinc-900 to-slate-900",
+    accentGradient: "bg-gradient-to-br from-[#1C1C1C] via-[#0F0F0F] to-[#0A3D82]/30",
     shortDescription:
       "I designed and deployed this self-hosted, air-gapped LLM inference and serving environment optimizing quantized models (GGUF/AWQ) on local compute with OpenAI-compatible API endpoints.",
     longDescription:
@@ -499,6 +500,6 @@ const projectList = [
       "Local vector embeddings and retrieval with Chroma and FAISS running entirely offline",
     ],
     tech: ["Ollama", "llama.cpp", "vLLM", "Python", "Chroma", "FAISS", "Docker", "Linux"],
-    githubUrl: "https://github.com/kelly26ici/portfilio",
+    githubUrl: "https://github.com/kelly26ici/portfolio",
   },
 ]

@@ -19,42 +19,42 @@ export default function TechStack() {
   return (
     <section
       id="techstack"
-      className="w-full max-w-7xl mx-auto py-24 md:py-32 cursor-default bg-background relative border-t border-text-secondary/10 overflow-hidden"
+      className="w-full max-w-7xl mx-auto py-24 md:py-32 cursor-default bg-background relative border-t border-surface-border dark:border-charcoal overflow-hidden"
     >
       <FadeDown>
         <div className="max-w-7xl mx-auto px-6 md:px-12 mb-16 md:mb-20 w-full text-left">
-          <div className="flex items-center gap-2 mb-3">
-            <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-            <h2 className="text-sm font-bold tracking-[0.2em] text-emerald-500 uppercase">
+          <div className="flex items-center gap-2.5 mb-3">
+            <span className="w-2.5 h-2.5 rounded-full bg-gold shadow-[0_0_8px_#D4AF37]"></span>
+            <h2 className="font-coconat text-xs font-bold tracking-[0.25em] text-gold uppercase">
               Comprehensive Toolkit
             </h2>
           </div>
-          <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-text-primary tracking-tighter">
+          <h3 className="font-cinzel text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary tracking-tight">
             My Skills & Engineering Stack
           </h3>
-          <p className="text-text-secondary text-base max-w-3xl mt-4 font-medium">
+          <p className="font-forum text-text-secondary text-base md:text-lg max-w-3xl mt-4 font-normal leading-relaxed">
             My comprehensive technical toolkit spanning modern machine learning libraries, autonomous agent frameworks,
             vector databases, cloud and local model serving, distributed backends, and real-world API integrations.
           </p>
         </div>
       </FadeDown>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col gap-14">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col gap-12">
         {techCategories.map((category, idx) => (
           <div
             key={idx}
-            className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-start p-6 md:p-8 rounded-3xl bg-thirdary/15 border border-text-secondary/10 hover:border-emerald-500/30 transition-all duration-300"
+            className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-start p-6 md:p-8 rounded-3xl bg-surface/80 dark:bg-deep-onyx/80 border border-surface-border dark:border-charcoal hover:border-gold/50 transition-all duration-300 shadow-sm"
           >
             {/* Category Header */}
             <div className="lg:w-1/3">
-              <FadeDown delay={idx * 0.05}>
-                <div className="inline-block px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 rounded-full text-xs font-mono font-bold uppercase tracking-wider mb-3">
+              <FadeDown delay={idx * 0.04}>
+                <div className="inline-block px-3 py-1 bg-gold/10 border border-gold/30 text-gold-hover dark:text-gold rounded-full font-coconat text-xs font-bold uppercase tracking-widest mb-3">
                   0{idx + 1} // Domain
                 </div>
-                <h4 className="text-2xl font-black text-text-primary tracking-tight mb-2">
+                <h4 className="font-ortica text-2xl font-bold text-text-primary tracking-tight mb-2">
                   {category.title}
                 </h4>
-                <p className="text-text-secondary font-medium text-sm leading-relaxed">
+                <p className="font-forum text-text-secondary font-normal text-sm leading-relaxed">
                   {category.description}
                 </p>
               </FadeDown>
@@ -63,22 +63,22 @@ export default function TechStack() {
             {/* Category Technology Badges Grid */}
             <div className="lg:w-2/3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 w-full">
               {category.technologies.map((tech, techIdx) => (
-                <FadeUp key={techIdx} delay={idx * 0.04 + techIdx * 0.02}>
-                  <div className="group flex flex-col items-center justify-center p-4 bg-background/90 hover:bg-background border border-text-secondary/15 hover:border-emerald-500/50 rounded-2xl transition-all duration-300 hover:-translate-y-1 shadow-xs hover:shadow-md h-full">
-                    <div className="w-10 h-10 mb-2.5 flex items-center justify-center text-text-primary group-hover:text-emerald-500 transition-colors">
+                <FadeUp key={techIdx} delay={idx * 0.03 + techIdx * 0.015}>
+                  <div className="group flex flex-col items-center justify-center p-4 bg-surface dark:bg-surface-raised border border-surface-border dark:border-charcoal hover:border-gold/60 rounded-2xl transition-all duration-300 hover:-translate-y-1 shadow-xs hover:shadow-[0_4px_20px_rgba(212,175,55,0.18)] h-full">
+                    <div className="w-10 h-10 mb-2.5 flex items-center justify-center text-text-primary group-hover:text-gold transition-colors">
                       {tech.icon ? (
                         tech.icon
                       ) : (
-                        <div className="w-9 h-9 rounded-xl bg-thirdary/60 font-mono font-black flex items-center justify-center text-sm border border-text-secondary/15 group-hover:border-emerald-500">
+                        <div className="w-9 h-9 rounded-xl bg-gold/10 font-coconat font-bold text-gold flex items-center justify-center text-sm border border-gold/25 group-hover:border-gold">
                           {tech.name.substring(0, 2).toUpperCase()}
                         </div>
                       )}
                     </div>
-                    <span className="text-xs font-bold text-text-primary text-center group-hover:text-emerald-500 transition-colors">
+                    <span className="font-coconat text-xs font-bold text-text-primary text-center group-hover:text-gold transition-colors leading-tight">
                       {tech.name}
                     </span>
                     {tech.sub && (
-                      <span className="text-[10px] text-text-secondary font-mono mt-0.5 text-center">
+                      <span className="font-messapia text-[10px] text-text-muted mt-1 text-center uppercase tracking-wider">
                         {tech.sub}
                       </span>
                     )}
