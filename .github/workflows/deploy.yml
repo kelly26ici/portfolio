@@ -1,0 +1,81 @@
+name: Deploy to HostKenya (cPanel)
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    name: Trigger cPanel Git Deployment
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Next.js application
+        run: npm run build
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
+
+      # ──────────────────────────────────────────────────────────────────────
+      # Option A: Trigger cPanel's built-in Git Version Control deployment.
+      # This calls HostKenya's cPanel UAPI which runs your .cpanel.yml tasks.
+      #
+      # Required GitHub secrets:
+      #   CPANEL_USERNAME   → your cPanel username (e.g. rexkelly)
+      #   CPANEL_TOKEN      → cPanel API token (cPanel → Security → Manage API Tokens)
+      #   CPANEL_DOMAIN     → your cPanel hostname (e.g. yourdomain.com or server IP)
+      #   CPANEL_REPO_DIR   → absolute path of the repo in cPanel (e.g. /home/rexkelly/portfolio)
+      # ──────────────────────────────────────────────────────────────────────
+      - name: Trigger cPanel Git Deployment via UAPI
+        run: |
+          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "Authorization: cpanel ${{ secrets.CPANEL_USERNAME }}:${{ secrets.CPANEL_TOKEN }}" \
+            "https://${{ secrets.CPANEL_DOMAIN }}:2083/execute/VersionControl/create_deployment?repository_root=${{ secrets.CPANEL_REPO_DIR }}")
+          echo "cPanel UAPI response: $RESPONSE"
+          if [ "$RESPONSE" != "200" ]; then
+            echo "::warning::cPanel deployment returned HTTP $RESPONSE. Check your secrets and cPanel Git configuration."
+          fi
+
+      # ──────────────────────────────────────────────────────────────────────
+      # Option B (fallback): Deploy built output via FTP/FTPS.
+      # Uncomment and configure this block if you prefer direct FTP upload.
+      #
+      # Required additional secrets:
+      #   FTP_HOST       → FTP hostname
+      #   FTP_USERNAME   → FTP username
+      #   FTP_PASSWORD   → FTP password
+      # ──────────────────────────────────────────────────────────────────────
+      # - name: Deploy via FTP (fallback)
+      #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      #   with:
+      #     server: ${{ secrets.FTP_HOST }}
+      #     username: ${{ secrets.FTP_USERNAME }}
+      #     password: ${{ secrets.FTP_PASSWORD }}
+      #     local-dir: ./
+      #     server-dir: /public_html/
+      #     exclude: |
+      #       **/.git*
+      #       **/.git*/**
+      #       **/node_modules/**
+      #       **/.next/**
+      #       **/out/**
+
+      - name: Deployment summary
+        run: |
+          echo "✅ Deploy workflow completed"
+          echo "Commit: ${{ github.sha }}"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Triggered by: ${{ github.actor }}"
