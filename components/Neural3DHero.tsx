@@ -51,7 +51,7 @@ export default function Neural3DHero() {
     // 3D Nodes generation
     const NODE_COUNT = 70
     const nodes: Node3D[] = []
-    const colors = ["#10b981", "#06b6d4", "#3b82f6", "#8b5cf6", "#14b8a6"]
+    const colors = ["#D4AF37", "#F3E5AB", "#0A3D82", "#E5C358", "#60A5FA"]
 
     const aiLabels = [
       "LangGraph", "PyTorch", "Qdrant", "FastAPI", "RAG",
@@ -184,7 +184,7 @@ export default function Neural3DHero() {
 
       // Draw Central Tensor Core (Geodesic edges)
       const projectedCore = icosahedronVertices.map((v) => project(v.x, v.y, v.z))
-      ctx.strokeStyle = "rgba(16, 185, 129, 0.18)"
+      ctx.strokeStyle = "rgba(212, 175, 55, 0.22)"
       ctx.lineWidth = 1
 
       for (let i = 0; i < projectedCore.length; i++) {
@@ -226,13 +226,13 @@ export default function Neural3DHero() {
         if (!p1 || !p2) return
 
         const avgScale = (p1.scale + p2.scale) / 2
-        const alpha = Math.max(0.04, Math.min(0.35, 0.15 * avgScale))
+        const alpha = Math.max(0.04, Math.min(0.35, 0.18 * avgScale))
 
         // Synapse line
         ctx.beginPath()
         ctx.moveTo(p1.px, p1.py)
         ctx.lineTo(p2.px, p2.py)
-        ctx.strokeStyle = `rgba(16, 185, 129, ${alpha})`
+        ctx.strokeStyle = `rgba(212, 175, 55, ${alpha})`
         ctx.lineWidth = Math.max(0.6, 1.2 * avgScale)
         ctx.stroke()
 
@@ -244,7 +244,7 @@ export default function Neural3DHero() {
 
         ctx.beginPath()
         ctx.arc(sigX, sigY, sigRadius, 0, Math.PI * 2)
-        ctx.fillStyle = "#34d399"
+        ctx.fillStyle = "#F3E5AB"
         ctx.fill()
       })
 
@@ -260,7 +260,7 @@ export default function Neural3DHero() {
         if (node.label) {
           ctx.beginPath()
           ctx.arc(node.px, node.py, radius * 2.8, 0, Math.PI * 2)
-          ctx.fillStyle = `rgba(16, 185, 129, ${0.15 * alpha})`
+          ctx.fillStyle = `rgba(212, 175, 55, ${0.18 * alpha})`
           ctx.fill()
         }
 
@@ -275,7 +275,7 @@ export default function Neural3DHero() {
         // Render AI Stack tags in 3D depth
         if (node.label && node.scale > 0.85) {
           ctx.font = `600 ${Math.round(10 * node.scale)}px sans-serif`
-          ctx.fillStyle = `rgba(229, 231, 235, ${Math.min(1, alpha * 1.3)})`
+          ctx.fillStyle = `rgba(243, 229, 171, ${Math.min(1, alpha * 1.3)})`
           ctx.fillText(node.label, node.px + radius + 4, node.py + 3)
         }
       })
@@ -307,20 +307,20 @@ export default function Neural3DHero() {
 
       {/* Cybernetic Telemetry HUD Overlays */}
       <div className="absolute top-2 left-2 z-20 pointer-events-none flex flex-col gap-1.5">
-        <div className="flex items-center gap-2 px-3 py-1 bg-background/80 dark:bg-background/90 backdrop-blur-md border border-text-secondary/15 rounded-full shadow-lg">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-          <span className="text-[11px] font-bold text-text-primary tracking-wider uppercase">
+        <div className="flex items-center gap-2 px-3 py-1 bg-surface/90 dark:bg-deep-onyx/90 backdrop-blur-md border border-surface-border dark:border-charcoal rounded-full shadow-lg">
+          <span className="w-2 h-2 rounded-full bg-gold shadow-[0_0_8px_#D4AF37] animate-ping"></span>
+          <span className="text-[11px] font-coconat font-bold text-text-primary tracking-wider uppercase">
             3D Neural Engine Active
           </span>
         </div>
-        <div className="px-3 py-1 bg-background/70 dark:bg-background/80 backdrop-blur-md border border-text-secondary/10 rounded-lg text-[10px] text-text-secondary font-mono">
+        <div className="px-3 py-1 bg-surface/80 dark:bg-deep-onyx/80 backdrop-blur-md border border-surface-border dark:border-charcoal rounded-lg text-[10px] text-text-secondary font-coconat">
           <span>Latent: {activeTelemetry.latentDim}</span> • <span>Latency: {activeTelemetry.inferenceLatency}</span>
         </div>
       </div>
 
       <div className="absolute bottom-3 right-3 z-20 pointer-events-none">
-        <div className="px-3 py-1.5 bg-background/80 dark:bg-background/90 backdrop-blur-md border border-text-secondary/15 rounded-xl shadow-lg flex items-center gap-2">
-          <span className="text-[10px] font-mono font-bold text-emerald-500">
+        <div className="px-3.5 py-1.5 bg-surface/90 dark:bg-deep-onyx/90 backdrop-blur-md border border-surface-border dark:border-charcoal rounded-xl shadow-lg flex items-center gap-2">
+          <span className="text-[10px] font-messapia font-bold text-gold tracking-widest">
             LANGGRAPH • QDRANT • PYTORCH
           </span>
         </div>

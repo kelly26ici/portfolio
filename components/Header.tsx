@@ -19,7 +19,6 @@ export default function Header() {
   }
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true)
 
     const savedTheme = typeof window !== "undefined" ? localStorage.getItem("theme") : null
@@ -69,72 +68,87 @@ export default function Header() {
     <div className="fixed top-4 md:top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none w-full">
       <div className="w-full max-w-5xl pointer-events-auto">
         <FadeDown>
-          <div className="relative flex items-center justify-between py-3 md:py-4 px-6 md:px-8 bg-background/80 backdrop-blur-md border border-text-secondary/20 rounded-full shadow-lg transition-colors duration-300">
+          <div className="relative flex items-center justify-between py-3 md:py-4 px-6 md:px-8 bg-surface/90 dark:bg-deep-onyx/90 backdrop-blur-xl border border-surface-border dark:border-charcoal rounded-full shadow-lg dark:shadow-[0_8px_32px_rgba(0,0,0,0.9)] transition-colors duration-300">
             <div className="flex flex-row items-center gap-2">
               {/* Typographic Logo */}
-              <a href="#home" className="flex items-center gap-2 group cursor-pointer">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span className="text-xl md:text-2xl font-black text-text-primary tracking-tighter group-hover:opacity-80 transition-opacity">
-                  KELLY<span className="text-emerald-500 font-bold">.AI</span>
+              <a href="#home" className="flex items-center gap-2.5 group cursor-pointer">
+                <span className="w-2.5 h-2.5 rounded-full bg-gold shadow-[0_0_10px_#D4AF37] animate-pulse"></span>
+                <span className="font-cinzel text-xl md:text-2xl font-bold text-text-primary tracking-tight group-hover:text-gold transition-colors duration-300">
+                  KELLY<span className="text-gold font-normal">.AI</span>
                 </span>
               </a>
             </div>
 
-            <nav className="flex-row md:gap-8 lg:gap-10 hidden lg:flex items-center">
-              {shortCut.map((item, index) => (
-                <button 
-                  onClick={() => handleScroll(item.link)} 
-                  key={index} 
-                  className={`
-                    ${activeSection === item.name.toLowerCase() ? "text-text-primary font-bold" : "text-text-secondary font-medium hover:text-text-primary"} 
-                    cursor-pointer text-sm md:text-base tracking-wide flex flex-row items-center transition-colors duration-200 ease-in-out
-                  `}
-                >
-                  {item.name}
-                </button>
-              ))}
+            <nav className="flex-row md:gap-7 lg:gap-9 hidden lg:flex items-center">
+              {shortCut.map((item, index) => {
+                const isActive = activeSection === item.name.toLowerCase()
+                return (
+                  <button
+                    onClick={() => handleScroll(item.link)}
+                    key={index}
+                    className={`
+                      ${isActive ? "text-gold font-bold" : "text-text-secondary hover:text-gold font-medium"}
+                      cursor-pointer font-messapia text-xs uppercase tracking-widest flex items-center gap-1.5 transition-colors duration-200 ease-in-out relative py-1
+                    `}
+                  >
+                    {isActive && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block" />
+                    )}
+                    {item.name}
+                  </button>
+                )
+              })}
             </nav>
 
             <div className="flex items-center gap-4">
+              {/* Theme Toggle */}
               <button
-                className="cursor-pointer text-text-secondary hover:text-text-primary transition-colors"
-                onClick={() => {
-                  toggleTheme()
-                }}
+                className="cursor-pointer text-text-secondary hover:text-gold transition-colors duration-200 p-1.5 rounded-full hover:bg-gold/10"
+                onClick={toggleTheme}
+                title={isDark ? "Switch to Luminous Light Mode" : "Switch to AMOLED Dark Mode"}
+                aria-label="Toggle theme"
               >
                 {isDark ? (
-                  <svg className="w-5 h-5 md:w-6 md:h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 md:w-5 md:h-5 text-gold" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 21a9 9 0 0 1-.5-17.986V3c-.354.966-.5 1.911-.5 3a9 9 0 0 0 9 9c.239 0 .254.018.488 0A9.004 9.004 0 0 1 12 21Z" />
                   </svg>
                 ) : (
-                  <svg className="w-5 h-5 md:w-6 md:h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 md:w-5 md:h-5 text-gold-hover" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5V3m0 18v-2M7.05 7.05 5.636 5.636m12.728 12.728L16.95 16.95M5 12H3m18 0h-2M7.05 16.95l-1.414 1.414M18.364 5.636 16.95 7.05M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" />
                   </svg>
                 )}
               </button>
 
-              <button className="lg:hidden text-text-secondary" onClick={() => setIsOpen(!isOpen)}>
+              <button
+                className="lg:hidden text-text-secondary hover:text-gold p-1"
+                onClick={() => setIsOpen(!isOpen)}
+                aria-label="Open menu"
+              >
                 <svg className="w-6 md:w-7" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                   <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="M5 7h14M5 12h14M5 17h14" />
+                  <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="M5 7h14M5 12h14M5 17h14" />
                 </svg>
               </button>
             </div>
 
+            {/* Mobile Menu */}
             <div className={`${isOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"} md:hidden transform absolute top-16 right-4 z-50 origin-top-right transition-all duration-300 ease-in-out`}>
-              {/* Mobile Menu Placeholder */}
-              <div className="flex flex-col gap-6 bg-background/95 backdrop-blur-md border border-text-secondary/10 p-6 rounded-2xl shadow-xl w-48">
-                {shortCut.map((item, index) => (
-                  <button 
-                    onClick={() => { handleScroll(item.link); setIsOpen(false); }} 
-                    key={index} 
-                    className={`
-                      ${activeSection === item.name.toLowerCase() ? "text-text-primary font-bold" : "text-text-secondary font-medium"} 
-                      cursor-pointer text-sm md:text-base flex flex-row items-center hover:text-text-primary transition-colors duration-200 ease-in-out
-                    `}
-                  >
-                    {item.name}
-                  </button>
-                ))}
+              <div className="flex flex-col gap-4 bg-surface dark:bg-deep-onyx border border-surface-border dark:border-charcoal p-6 rounded-2xl shadow-2xl w-52">
+                {shortCut.map((item, index) => {
+                  const isActive = activeSection === item.name.toLowerCase()
+                  return (
+                    <button
+                      onClick={() => { handleScroll(item.link); setIsOpen(false); }}
+                      key={index}
+                      className={`
+                        ${isActive ? "text-gold font-bold" : "text-text-secondary font-medium hover:text-gold"}
+                        cursor-pointer font-messapia text-xs uppercase tracking-widest flex items-center gap-2 py-1.5 transition-colors duration-200 text-left
+                      `}
+                    >
+                      {isActive && <span className="w-1.5 h-1.5 rounded-full bg-gold" />}
+                      {item.name}
+                    </button>
+                  )
+                })}
               </div>
             </div>
           </div>
