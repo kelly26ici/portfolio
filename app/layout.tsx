@@ -1,12 +1,56 @@
 import type { Metadata } from "next"
-import { Poppins } from "next/font/google"
+import { Cinzel, Forum } from "next/font/google"
+import localFont from "next/font/local"
 import "../styles/globals.css"
 import PageLoader from "@/components/PageLoader"
 
-const poppins = Poppins({
+const cinzel = Cinzel({
   subsets: ["latin"],
-  weight: ["400", "600"],
-  variable: "--font-poppins",
+  weight: ["400", "600", "700", "900"],
+  variable: "--font-cinzel",
+  display: "swap",
+})
+
+const forum = Forum({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-forum",
+  display: "swap",
+})
+
+const coconat = localFont({
+  src: [
+    { path: "../public/fonts/Coconat-Regular.woff2", weight: "400", style: "normal" },
+    { path: "../public/fonts/Coconat-BoldExt.woff2", weight: "700", style: "normal" },
+  ],
+  variable: "--font-coconat",
+  display: "swap",
+})
+
+const messapia = localFont({
+  src: [
+    { path: "../public/fonts/Messapia-Regular.otf", weight: "400", style: "normal" },
+    { path: "../public/fonts/Messapia-Bold.otf", weight: "700", style: "normal" },
+  ],
+  variable: "--font-messapia",
+  display: "swap",
+})
+
+const ortica = localFont({
+  src: [
+    { path: "../public/fonts/Ortica-Light.otf", weight: "300", style: "normal" },
+    { path: "../public/fonts/Ortica-Bold.otf", weight: "700", style: "normal" },
+  ],
+  variable: "--font-ortica",
+  display: "swap",
+})
+
+const amagro = localFont({
+  src: [
+    { path: "../public/fonts/Amagro-Bold.woff", weight: "700", style: "normal" },
+  ],
+  variable: "--font-amagro",
+  display: "swap",
 })
 
 export const metadata: Metadata = {
@@ -67,8 +111,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`${poppins.className} antialiased`}>
+    <html
+      lang="en"
+      className={`${cinzel.variable} ${forum.variable} ${coconat.variable} ${messapia.variable} ${ortica.variable} ${amagro.variable}`}
+    >
+      <body className={`${forum.className} font-forum antialiased selection:bg-gold/30 selection:text-gold-dark`}>
         <PageLoader />
         {children}
       </body>

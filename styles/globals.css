@@ -1,65 +1,175 @@
 @import "tailwindcss";
 
-/* 🎨 Default (Light Theme) */
+/* ==========================================================================
+   COLOR PALETTE
+   • Polished Gold:   #D4AF37
+   • Deep Onyx:       #0F0F0F
+   • Charcoal:        #2C2C2C
+   • Soft Champagne:  #F3E5AB
+   • Classic Navy:    #0A3D82
+   ========================================================================== */
+
+/* ☀️ Light Theme (Luminous, warm champagne-tinted white, genuinely bright) */
 :root {
-  --background: #fdfdfd;
-  --foreground: #ffffff;
-  --thirdary: #f3f4f6;
-  --text-primary: #111827;
-  --text-secondary: #6b7280;
-  --button-hover: #e5e7eb;
-  --neon-color: #111827; /* Replaced neon with strong primary contrast */
-  --button-hero: #111827;
-  --button-hero-hover: #374151;
-  --quick-stats-bg: #ffffff;
-  --bg-project-card: #ffffff;
-  --text-project-card: #fdfdfd;
+  --background: #FDFCF7;
+  --foreground: #0F0F0F;
+  --surface: #FFFFFF;
+  --surface-raised: #F7F4EA;
+  --surface-border: rgba(44, 44, 44, 0.12);
+  --border: rgba(44, 44, 44, 0.12);
+  
+  --text-primary: #0F0F0F;
+  --text-secondary: #3D3D3D;
+  --text-muted: #6B665A;
+
+  --gold: #D4AF37;
+  --gold-hover: #BF9B2D;
+  --deep-onyx: #0F0F0F;
+  --charcoal: #2C2C2C;
+  --champagne: #F3E5AB;
+  --champagne-soft: #FAF5DF;
+  --classic-navy: #0A3D82;
+
+  --button-hover: #F3E5AB;
+  --button-hero: #0F0F0F;
+  --button-hero-text: #FDFCF7;
+  --button-hero-hover: #2C2C2C;
+  --quick-stats-bg: #FFFFFF;
+  --bg-project-card: #FFFFFF;
+  --text-project-card: #0F0F0F;
+  --card-border: rgba(44, 44, 44, 0.1);
+  --card-hover-border: rgba(212, 175, 55, 0.5);
+
+  --accent-gold: #D4AF37;
+  --accent-navy: #0A3D82;
 }
 
-/* 🌙 Dark Theme (aktif saat class .dark ada di <html>) */
+/* 🌑 Dark Theme (Pure AMOLED Black #000000 + Deep Onyx #0F0F0F + Charcoal #2C2C2C) */
 .dark {
-  --background: #0a0a0a;
-  --foreground: #121212;
-  --thirdary: #171717;
-  --text-primary: #ececec;
-  --text-secondary: #a1a1aa;
-  --button-hover: #262626;
-  --neon-color: #ececec; /* Replaced neon with strong primary contrast */
-  --button-hero: #ffffff;
-  --button-hero-hover: #e5e5e5;
-  --quick-stats-bg: #171717;
-  --bg-project-card: #171717;
-  --text-project-card: #0a0a0a;
+  --background: #000000;
+  --foreground: #FAF8F5;
+  --surface: #0F0F0F;
+  --surface-raised: #181818;
+  --surface-border: #2C2C2C;
+  --border: #2C2C2C;
+
+  --text-primary: #FAF8F5;
+  --text-secondary: #C8C2AF;
+  --text-muted: #8E897A;
+
+  --gold: #D4AF37;
+  --gold-hover: #E5C358;
+  --deep-onyx: #0F0F0F;
+  --charcoal: #2C2C2C;
+  --champagne: #F3E5AB;
+  --champagne-soft: rgba(243, 229, 171, 0.08);
+  --classic-navy: #0A3D82;
+
+  --button-hover: #1F1F1F;
+  --button-hero: #D4AF37;
+  --button-hero-text: #000000;
+  --button-hero-hover: #E5C358;
+  --quick-stats-bg: #0F0F0F;
+  --bg-project-card: #0F0F0F;
+  --text-project-card: #FAF8F5;
+  --card-border: #2C2C2C;
+  --card-hover-border: rgba(212, 175, 55, 0.6);
+
+  --accent-gold: #D4AF37;
+  --accent-navy: #0A3D82;
 }
 
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-thirdary: var(--thirdary);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-border: var(--surface-border);
+  --color-border: var(--border);
+
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  --color-gold: var(--gold);
+  --color-gold-hover: var(--gold-hover);
+  --color-deep-onyx: var(--deep-onyx);
+  --color-charcoal: var(--charcoal);
+  --color-champagne: var(--champagne);
+  --color-champagne-soft: var(--champagne-soft);
+  --color-classic-navy: var(--classic-navy);
+
   --color-button-hover: var(--button-hover);
-  --color-neon: var(--neon-color);
-  --font-sans: var(--font-poppins);
-  --font-mono: var(--font-geist-mono);
   --color-button-hero: var(--button-hero);
   --color-button-hero-hover: var(--button-hero-hover);
   --color-quick-stats-bg: var(--quick-stats-bg);
   --color-bg-project-card: var(--bg-project-card);
   --color-text-project-card: var(--text-project-card);
+  --color-card-border: var(--card-border);
+  --color-card-hover-border: var(--card-hover-border);
+
+  --font-forum: var(--font-forum);
+  --font-cinzel: var(--font-cinzel);
+  --font-coconat: var(--font-coconat);
+  --font-messapia: var(--font-messapia);
+  --font-ortica: var(--font-ortica);
+  --font-amagro: var(--font-amagro);
+  --font-sans: var(--font-forum), serif;
 }
 
-/* 🌈 Gunakan variable di seluruh body */
+/* Base Body Styles */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  transition: background 0.3s ease, color 0.3s ease;
-  font-family: var(--font-sans), sans-serif;
+  background-color: var(--background);
+  color: var(--text-primary);
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: var(--font-forum), Georgia, serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ✨ Animasi cursor blink */
+/* Typography Utility Classes */
+.font-forum {
+  font-family: var(--font-forum), Georgia, serif;
+}
+
+.font-cinzel {
+  font-family: var(--font-cinzel), "Times New Roman", serif;
+}
+
+.font-coconat {
+  font-family: var(--font-coconat), serif;
+}
+
+.font-messapia {
+  font-family: var(--font-messapia), serif;
+}
+
+.font-ortica {
+  font-family: var(--font-ortica), serif;
+}
+
+.font-amagro {
+  font-family: var(--font-amagro), serif;
+}
+
+/* Gold glow and borders */
+.gold-glow {
+  box-shadow: 0 0 25px -5px rgba(212, 175, 55, 0.25);
+}
+
+.gold-glow-subtle {
+  box-shadow: 0 4px 20px -5px rgba(212, 175, 55, 0.15);
+}
+
+.dark .gold-glow {
+  box-shadow: 0 0 30px -4px rgba(212, 175, 55, 0.35);
+}
+
+.dark .gold-glow-subtle {
+  box-shadow: 0 4px 25px -5px rgba(212, 175, 55, 0.2);
+}
+
+/* Cursor Blink */
 @keyframes blink {
   0%, 50%, 100% { opacity: 1; }
   25%, 75% { opacity: 0; }
@@ -69,28 +179,21 @@ body {
   animation: blink 1.5s infinite;
 }
 
-/* 🎈 Animasi floating (Subtle) */
+/* Floating animation */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
+  50% { transform: translateY(-5px); }
 }
 
 .floating {
   animation: float 4s ease-in-out infinite;
 }
 
-/* 💡 Efek Neon Glow - Removed for typography theme, replaced with a very subtle soft shadow */
-.neon {
-  box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.05);
-}
-.dark .neon {
-  box-shadow: 0 4px 20px -5px rgba(255, 255, 255, 0.02);
-}
-
 html {
   scroll-behavior: smooth;
 }
 
+/* Custom Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -100,31 +203,26 @@ html {
   background: transparent;
 }
 
-.dark ::-webkit-scrollbar-track {
-  background: transparent;
-}
-
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #D4AF37;
   border-radius: 6px;
   transition: background 0.3s ease;
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: #3f3f46;
+  background: #2C2C2C;
   border-radius: 6px;
   transition: background 0.3s ease;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
-
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: #52525b;
+  background: #D4AF37;
 }
 
-/* 📦 Custom scrollbar for inner scroll containers */
+::-webkit-scrollbar-thumb:hover {
+  background: #B8860B;
+}
+
 .custom-scrollbar::-webkit-scrollbar {
   width: 4px;
   height: 4px;
@@ -135,28 +233,19 @@ html {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: rgba(212, 175, 55, 0.4);
   border-radius: 4px;
 }
 
 .dark .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #3f3f46;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #2C2C2C;
 }
 
 .dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #52525b;
+  background: #D4AF37;
 }
 
-/* Tech stack SVG icon filter: always original color */
-.tech-icon-img {
-  transition: transform 0.3s ease;
-}
-
-/* 🔄 Animasi Infinite Scroll */
+/* Infinite Scroll Animation */
 @keyframes infinite-scroll {
   from {
     transform: translateX(0);
@@ -167,7 +256,7 @@ html {
 }
 
 .animate-infinite-scroll {
-  animation: infinite-scroll 25s linear infinite;
+  animation: infinite-scroll 28s linear infinite;
   width: max-content;
 }
 
