@@ -35,27 +35,27 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
 
-      # ── 5. Prepare Passenger restart trigger ────────────────────────────────
-      - name: Create Passenger restart trigger
+      # ── 5. Clean up node_modules & cache to ensure lightning fast FTP ──────
+      - name: Clean up heavy non-production files
         run: |
+          rm -rf node_modules
+          rm -rf .next/cache
           mkdir -p tmp
           touch tmp/restart.txt
 
       # ── 6. FTP Deploy ──────────────────────────────────────────────────────
-      #  Uploads everything including pre-built .next/, app.js, and server.js.
-      #  Excludes node_modules to prevent FTP 550 directory errors.
-      - name: Deploy via FTP to /portfolio directory
+      - name: Deploy via FTP to portfolio directory
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./
-          server-dir: /portfolio/
+          server-dir: portfolio/
+          log-level: verbose
           exclude: |
             **/.git*
             **/.git*/**
-            **/node_modules/**
             **/coverage/**
             **/*.log
             **/README.md
