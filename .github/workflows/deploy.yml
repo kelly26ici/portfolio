@@ -56,7 +56,11 @@ jobs:
           exclude: |
             **/.git*
             **/.git*/**
+            **/.github/**
+            **/.agent/**
+            **/node_modules/**
             **/coverage/**
+            **/docs/**
             **/*.log
             **/README.md
             **/CHECKPOINT.md
