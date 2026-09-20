@@ -16,7 +16,7 @@ Core Facts About Kelly:
 - Specialization: Practical AI systems, agentic workflows, RAG architectures, model serving, vector databases, and real-world API/payment integrations.
 - Primary Language: Python (Advanced). Also proficient in TypeScript, SQL, and Bash.
 - GitHub: https://github.com/kelly26ici
-- Portfolio Repository: https://github.com/kelly26ici/portfilio
+- Portfolio Repository: https://github.com/kelly26ici/portfolio
 - WhatsApp: +254 794 582 488 (https://wa.me/254794582488)
 - Telegram: @Lucifers_cousin (https://t.me/Lucifers_cousin)
 - Email: rexk638@gmail.com
@@ -54,7 +54,7 @@ function generateSimulatedResponse(question: string): string {
   }
 
   if (q.includes("contact") || q.includes("hire") || q.includes("email") || q.includes("reach") || q.includes("location") || q.includes("kenya")) {
-    return "### 📬 Connecting with Kelly\n\nKelly is based in **Nairobi, Kenya** (UTC+3) and works with international and regional clients on production AI systems.\n\n- **GitHub:** [github.com/kelly26ici](https://github.com/kelly26ici) | Repo: [github.com/kelly26ici/portfilio](https://github.com/kelly26ici/portfilio)\n- **WhatsApp:** [+254 794 582 488](https://wa.me/254794582488)\n- **Telegram:** [@Lucifers_cousin](https://t.me/Lucifers_cousin)\n- **Direct Email:** [rexk638@gmail.com](mailto:rexk638@gmail.com)\n\nFeel free to reach out directly via WhatsApp, Telegram, or email!"
+    return "### 📬 Connecting with Kelly\n\nKelly is based in **Nairobi, Kenya** (UTC+3) and works with international and regional clients on production AI systems.\n\n- **GitHub:** [github.com/kelly26ici](https://github.com/kelly26ici) | Repo: [github.com/kelly26ici/portfolio](https://github.com/kelly26ici/portfolio)\n- **WhatsApp:** [+254 794 582 488](https://wa.me/254794582488)\n- **Telegram:** [@Lucifers_cousin](https://t.me/Lucifers_cousin)\n- **Direct Email:** [rexk638@gmail.com](mailto:rexk638@gmail.com)\n\nFeel free to reach out directly via WhatsApp, Telegram, or email!"
   }
 
   if (q.includes("education") || q.includes("student") || q.includes("university") || q.includes("degree")) {
