@@ -56,6 +56,8 @@ jobs:
           exclude: |
             **/.git*
             **/.git*/**
+            **/.agent/**
+            **/.github/**
             **/coverage/**
             **/*.log
             **/README.md
