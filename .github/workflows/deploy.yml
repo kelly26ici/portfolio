@@ -27,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
-      # ── 4. Build Next.js (needs RAM — done here, NOT on the server) ────────
+      # ── 4. Build Next.js ───────────────────────────────────────────────────
       - name: Build Next.js application
         run: npm run build
         env:
@@ -35,20 +35,15 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
 
-      # ── 5. Prune to production deps only (smaller upload) ─────────────────
-      - name: Prune to production dependencies
-        run: npm prune --production --legacy-peer-deps
+      # ── 5. Prepare Passenger restart trigger ────────────────────────────────
+      - name: Create Passenger restart trigger
+        run: |
+          mkdir -p tmp
+          touch tmp/restart.txt
 
-      # ── 6. FTP Deploy — uploads everything including pre-built .next/ ──────
-      #
-      #  The server NEVER needs to run `npm run build` — the built .next/
-      #  folder is uploaded here. Server only runs `next start` via server.js.
-      #
-      #  Add these 3 secrets in GitHub → Settings → Secrets → Actions:
-      #    FTP_HOST      → HostKenya FTP hostname (e.g. ftp.yoursite.com)
-      #    FTP_USERNAME  → your cPanel username  (rexkelly)
-      #    FTP_PASSWORD  → your cPanel password
-      # ────────────────────────────────────────────────────────────────────────
+      # ── 6. FTP Deploy ──────────────────────────────────────────────────────
+      #  Uploads everything including pre-built .next/, app.js, and server.js.
+      #  Excludes node_modules to prevent FTP 550 directory errors.
       - name: Deploy via FTP to /portfolio directory
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -60,17 +55,19 @@ jobs:
           exclude: |
             **/.git*
             **/.git*/**
+            **/node_modules/**
             **/coverage/**
             **/*.log
-            **/tmp/**
+            **/README.md
+            **/CHECKPOINT.md
 
       # ── 7. Summary ─────────────────────────────────────────────────────────
       - name: Deployment summary
         run: |
           echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
           echo "✅  Build + Deploy complete"
-          echo "    .next/ folder uploaded — server runs next start"
+          echo "    Pre-built .next/, server.js, app.js deployed"
+          echo "    Passenger restart triggered via tmp/restart.txt"
           echo "    Commit : ${{ github.sha }}"
           echo "    Branch : ${{ github.ref_name }}"
-          echo "    Actor  : ${{ github.actor }}"
           echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
