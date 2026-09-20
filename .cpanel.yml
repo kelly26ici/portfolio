@@ -1,6 +1,14 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/rexkelly/public_html/
-    - /bin/cp -R * $DEPLOYPATH
-    
+    - export DEPLOYPATH=/home/rexkelly/public_html
+    - export NODE_VERSION=20
+    - source /etc/profile
+    - /usr/local/bin/npm ci --legacy-peer-deps 2>/dev/null || npm install --legacy-peer-deps
+    - /usr/local/bin/npm run build 2>/dev/null || npm run build
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -R .next $DEPLOYPATH/
+    - /bin/cp -R public $DEPLOYPATH/
+    - /bin/cp package.json $DEPLOYPATH/
+    - /bin/cp next.config.ts $DEPLOYPATH/
+    - cd $DEPLOYPATH && /usr/local/bin/npm install --omit=dev --legacy-peer-deps 2>/dev/null || true

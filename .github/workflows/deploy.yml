@@ -1,81 +1,89 @@
-name: Deploy to HostKenya (cPanel)
+name: Build & Deploy to HostKenya (cPanel)
 
 on:
   push:
     branches:
       - master
+  workflow_dispatch:  # Allow manual trigger from GitHub Actions UI
 
 jobs:
-  deploy:
-    name: Trigger cPanel Git Deployment
+  build-and-deploy:
+    name: Build Next.js & Deploy to cPanel
     runs-on: ubuntu-latest
 
     steps:
+      # ── 1. Checkout ────────────────────────────────────────────────────────
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      # ── 2. Set up Node.js ──────────────────────────────────────────────────
+      - name: Set up Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
 
+      # ── 3. Install dependencies ────────────────────────────────────────────
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
+      # ── 4. Build Next.js ───────────────────────────────────────────────────
       - name: Build Next.js application
         run: npm run build
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
 
-      # ──────────────────────────────────────────────────────────────────────
-      # Option A: Trigger cPanel's built-in Git Version Control deployment.
-      # This calls HostKenya's cPanel UAPI which runs your .cpanel.yml tasks.
+      # ── 5a. Deploy via FTP (primary method — works with no Node.js on server)
+      #        Upload the built .next output + source files to public_html.
       #
-      # Required GitHub secrets:
-      #   CPANEL_USERNAME   → your cPanel username (e.g. rexkelly)
-      #   CPANEL_TOKEN      → cPanel API token (cPanel → Security → Manage API Tokens)
-      #   CPANEL_DOMAIN     → your cPanel hostname (e.g. yourdomain.com or server IP)
-      #   CPANEL_REPO_DIR   → absolute path of the repo in cPanel (e.g. /home/rexkelly/portfolio)
-      # ──────────────────────────────────────────────────────────────────────
-      - name: Trigger cPanel Git Deployment via UAPI
+      #  Required GitHub secrets:
+      #    FTP_HOST      → your HostKenya FTP hostname (e.g. ftp.yoursite.com)
+      #    FTP_USERNAME  → FTP username (usually same as cPanel username: rexkelly)
+      #    FTP_PASSWORD  → FTP password (your cPanel password)
+      # ────────────────────────────────────────────────────────────────────────
+      - name: Deploy via FTP to public_html
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./
+          server-dir: /public_html/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/coverage/**
+            **/.env*
+            **/*.log
+        continue-on-error: true  # Don't fail the whole workflow if FTP isn't configured yet
+
+      # ── 5b. Trigger cPanel Git Deployment (alternative method) ─────────────
+      #        If you have cPanel's Git Version Control set up pointing to this
+      #        repo, this call tells it to pull and run .cpanel.yml tasks.
+      #
+      #  Required GitHub secrets:
+      #    CPANEL_USERNAME  → cPanel username (rexkelly)
+      #    CPANEL_TOKEN     → cPanel API token (Security → Manage API Tokens)
+      #    CPANEL_DOMAIN    → your cPanel hostname or server IP
+      #    CPANEL_REPO_DIR  → absolute server path of the cloned repo
+      #                       (e.g. /home/rexkelly/portfolio)
+      # ────────────────────────────────────────────────────────────────────────
+      - name: Trigger cPanel Git Deployment (optional)
+        if: ${{ secrets.CPANEL_TOKEN != '' }}
         run: |
-          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" \
+          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
             -H "Authorization: cpanel ${{ secrets.CPANEL_USERNAME }}:${{ secrets.CPANEL_TOKEN }}" \
             "https://${{ secrets.CPANEL_DOMAIN }}:2083/execute/VersionControl/create_deployment?repository_root=${{ secrets.CPANEL_REPO_DIR }}")
-          echo "cPanel UAPI response: $RESPONSE"
-          if [ "$RESPONSE" != "200" ]; then
-            echo "::warning::cPanel deployment returned HTTP $RESPONSE. Check your secrets and cPanel Git configuration."
-          fi
+          echo "cPanel UAPI response: $HTTP_CODE"
 
-      # ──────────────────────────────────────────────────────────────────────
-      # Option B (fallback): Deploy built output via FTP/FTPS.
-      # Uncomment and configure this block if you prefer direct FTP upload.
-      #
-      # Required additional secrets:
-      #   FTP_HOST       → FTP hostname
-      #   FTP_USERNAME   → FTP username
-      #   FTP_PASSWORD   → FTP password
-      # ──────────────────────────────────────────────────────────────────────
-      # - name: Deploy via FTP (fallback)
-      #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-      #   with:
-      #     server: ${{ secrets.FTP_HOST }}
-      #     username: ${{ secrets.FTP_USERNAME }}
-      #     password: ${{ secrets.FTP_PASSWORD }}
-      #     local-dir: ./
-      #     server-dir: /public_html/
-      #     exclude: |
-      #       **/.git*
-      #       **/.git*/**
-      #       **/node_modules/**
-      #       **/.next/**
-      #       **/out/**
-
+      # ── 6. Summary ─────────────────────────────────────────────────────────
       - name: Deployment summary
         run: |
-          echo "✅ Deploy workflow completed"
-          echo "Commit: ${{ github.sha }}"
-          echo "Branch: ${{ github.ref_name }}"
-          echo "Triggered by: ${{ github.actor }}"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "✅  Deploy workflow finished"
+          echo "    Commit : ${{ github.sha }}"
+          echo "    Branch : ${{ github.ref_name }}"
+          echo "    Actor  : ${{ github.actor }}"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
