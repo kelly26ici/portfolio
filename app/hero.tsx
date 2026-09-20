@@ -47,7 +47,7 @@ export default function Hero() {
           setIndex((currentIndex + 1) % texts.length)
         }
       },
-      deleting ? 50 : 100
+      deleting ? 45 : 95
     )
 
     return () => clearTimeout(timeout)
@@ -64,32 +64,32 @@ export default function Hero() {
             <div className="flex flex-col gap-3">
               {/* Location & Status Badge */}
               <div className="flex flex-wrap items-center gap-3 mb-2">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 rounded-full text-xs font-bold tracking-wide">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-gold/10 border border-gold/30 text-gold-hover dark:text-gold rounded-full font-coconat text-[11px] font-bold tracking-widest uppercase">
+                  <span className="w-2 h-2 rounded-full bg-gold shadow-[0_0_8px_#D4AF37] animate-pulse"></span>
                   Nairobi, Kenya • Available for Production AI Engineering
                 </span>
               </div>
 
               <div>
-                <h1 className="text-text-primary text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.08]">
+                <h1 className="font-cinzel text-text-primary text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.08]">
                   Hi, I&apos;m{" "}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-500">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-champagne to-gold drop-shadow-sm">
                     Kelly
                   </span>
                 </h1>
               </div>
 
-              <div className="relative min-h-[36px] flex items-center">
-                <span className="text-text-primary text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold tracking-tight">
+              <div className="relative min-h-[38px] flex items-center">
+                <span className="font-forum text-text-primary text-xl sm:text-2xl md:text-3xl font-semibold tracking-wide">
                   {`${texts[index].substring(0, subIndex)}`}
                 </span>
-                <span className="animate-cursor text-emerald-500 text-2xl lg:text-3xl font-light ml-0.5">
+                <span className="animate-cursor text-gold text-2xl lg:text-3xl font-light ml-1">
                   |
                 </span>
               </div>
 
               <div className="max-w-xl mt-3">
-                <p className="text-text-secondary text-base md:text-lg leading-relaxed font-medium">
+                <p className="font-forum text-text-secondary text-base md:text-lg leading-relaxed font-normal">
                   I engineer practical, production-grade AI systems, autonomous agents,
                   and real-world software integrations. Rather than isolated chatbots, I build
                   systems where state-of-the-art models connect directly with data, vector memory,
@@ -101,11 +101,11 @@ export default function Hero() {
               <div className="flex flex-col sm:flex-row gap-4 mt-6">
                 <button
                   onClick={() => handleScroll("projects")}
-                  className="cursor-pointer text-sm md:text-base font-bold bg-text-primary text-background px-8 py-4 rounded-xl flex flex-row items-center justify-center gap-3 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 ease-out group"
+                  className="cursor-pointer font-coconat text-xs uppercase tracking-widest font-bold bg-gold hover:bg-gold-hover text-deep-onyx px-8 py-4 rounded-xl flex flex-row items-center justify-center gap-3 hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(212,175,55,0.35)] transition-all duration-300 ease-out group"
                 >
                   Explore My Work
                   <svg
-                    className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                    className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -117,7 +117,7 @@ export default function Hero() {
                       stroke="currentColor"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      strokeWidth="2"
+                      strokeWidth="2.5"
                       d="M19 12H5m14 0-4 4m4-4-4-4"
                     />
                   </svg>
@@ -125,11 +125,11 @@ export default function Hero() {
 
                 <button
                   onClick={() => handleScroll("techstack")}
-                  className="cursor-pointer text-sm md:text-base font-bold border-2 border-text-secondary/20 hover:border-text-primary text-text-primary px-8 py-4 rounded-xl flex flex-row items-center justify-center gap-3 hover:-translate-y-1 hover:bg-thirdary/40 transition-all duration-300 ease-out bg-background/50 backdrop-blur-sm shadow-sm"
+                  className="cursor-pointer font-coconat text-xs uppercase tracking-widest font-bold border border-surface-border dark:border-charcoal hover:border-gold hover:text-gold text-text-primary px-8 py-4 rounded-xl flex flex-row items-center justify-center gap-3 hover:-translate-y-1 hover:bg-gold/5 transition-all duration-300 ease-out bg-surface/80 dark:bg-deep-onyx/80 backdrop-blur-sm shadow-sm"
                 >
                   My Tech Matrix
                   <svg
-                    className="w-5 h-5"
+                    className="w-4 h-4"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -144,13 +144,13 @@ export default function Hero() {
                 </button>
 
                 <a
-                  href="https://github.com/kelly26ici/portfilio"
+                  href="https://github.com/kelly26ici/portfolio"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="cursor-pointer text-sm md:text-base font-bold border border-text-secondary/20 hover:border-emerald-500 text-text-primary px-6 py-4 rounded-xl flex flex-row items-center justify-center gap-2 hover:-translate-y-1 transition-all duration-300 bg-thirdary/30"
+                  className="cursor-pointer font-coconat text-xs uppercase tracking-widest font-bold border border-surface-border dark:border-charcoal hover:border-gold hover:text-gold text-text-primary px-6 py-4 rounded-xl flex flex-row items-center justify-center gap-2 hover:-translate-y-1 hover:bg-gold/5 transition-all duration-300 bg-surface/50 dark:bg-deep-onyx/50"
                 >
                   <svg
-                    className="h-5 w-5"
+                    className="h-4 w-4"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -161,8 +161,8 @@ export default function Hero() {
               </div>
 
               {/* Social Connect */}
-              <div className="mt-10 pt-6 border-t border-text-secondary/10">
-                <span className="text-xs uppercase tracking-widest font-bold text-text-secondary mb-3 block">
+              <div className="mt-10 pt-6 border-t border-surface-border dark:border-charcoal">
+                <span className="font-messapia text-xs uppercase tracking-widest font-semibold text-text-secondary mb-3.5 block">
                   Connect Directly With Me
                 </span>
                 <div className="flex flex-row gap-3">
@@ -171,7 +171,7 @@ export default function Hero() {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 border border-text-secondary/20 rounded-xl hover:border-emerald-500 hover:text-emerald-500 text-text-primary transition-all duration-300 bg-background/50 hover:-translate-y-1"
+                      className="p-3 border border-surface-border dark:border-charcoal rounded-xl hover:border-gold hover:text-gold text-text-primary transition-all duration-300 bg-surface/80 dark:bg-deep-onyx/80 hover:-translate-y-1 hover:shadow-md"
                       key={i}
                       title={item.title}
                     >
@@ -196,12 +196,12 @@ export default function Hero() {
                 {quickStatsList.map((stat, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-3 bg-background/90 backdrop-blur-md border border-text-secondary/10 p-3 rounded-xl shadow-sm hover:border-text-secondary/30 transition-all duration-300"
+                    className="flex items-center gap-3 bg-surface/90 dark:bg-deep-onyx/90 backdrop-blur-md border border-surface-border dark:border-charcoal p-3.5 rounded-xl shadow-sm hover:border-gold/40 transition-all duration-300"
                   >
-                    <div className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 p-2 rounded-lg">
+                    <div className="bg-gold/10 text-gold-hover dark:text-gold p-2.5 rounded-lg flex-shrink-0">
                       {stat.icon}
                     </div>
-                    <span className="text-xs font-semibold text-text-primary leading-tight">
+                    <span className="font-forum text-xs font-semibold text-text-primary leading-tight">
                       {stat.message}
                     </span>
                   </div>
