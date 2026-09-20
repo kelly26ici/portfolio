@@ -42,8 +42,8 @@ export default function PageLoader() {
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
               className="text-4xl md:text-5xl font-black text-text-primary tracking-tighter"
             >
-              RyHar
-              <span className="text-thirdary">.</span>
+              KELLY
+              <span className="text-emerald-500">.AI</span>
             </motion.div>
           </div>
 
@@ -52,9 +52,9 @@ export default function PageLoader() {
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-              className="text-sm font-bold tracking-[0.3em] uppercase text-text-secondary"
+              className="text-xs font-mono font-bold tracking-[0.3em] uppercase text-emerald-500"
             >
-              Portfolio Loading
+              Initializing AI Systems...
             </motion.div>
           </div>
 

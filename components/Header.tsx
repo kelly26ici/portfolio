@@ -70,9 +70,14 @@ export default function Header() {
       <div className="w-full max-w-5xl pointer-events-auto">
         <FadeDown>
           <div className="relative flex items-center justify-between py-3 md:py-4 px-6 md:px-8 bg-background/80 backdrop-blur-md border border-text-secondary/20 rounded-full shadow-lg transition-colors duration-300">
-            <div className="flex flex-row items-center">
+            <div className="flex flex-row items-center gap-2">
               {/* Typographic Logo */}
-              <span className="text-xl md:text-2xl font-black text-text-primary tracking-tighter">PORTFOLIO.</span>
+              <a href="#home" className="flex items-center gap-2 group cursor-pointer">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span className="text-xl md:text-2xl font-black text-text-primary tracking-tighter group-hover:opacity-80 transition-opacity">
+                  KELLY<span className="text-emerald-500 font-bold">.AI</span>
+                </span>
+              </a>
             </div>
 
             <nav className="flex-row md:gap-8 lg:gap-10 hidden lg:flex items-center">
@@ -149,12 +154,16 @@ const shortCut = [
     link: "about",
   },
   {
-    name: "Experience",
-    link: "experience",
+    name: "Stack",
+    link: "techstack",
   },
   {
     name: "Projects",
     link: "projects",
+  },
+  {
+    name: "Experience",
+    link: "experience",
   },
   {
     name: "Contacts",
