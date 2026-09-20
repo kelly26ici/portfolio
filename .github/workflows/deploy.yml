@@ -4,11 +4,11 @@ on:
   push:
     branches:
       - master
-  workflow_dispatch:  # Allow manual trigger from GitHub Actions UI
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
-    name: Build Next.js & Deploy to cPanel
+    name: Build Next.js & FTP Deploy to cPanel
     runs-on: ubuntu-latest
 
     steps:
@@ -16,74 +16,61 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # ── 2. Set up Node.js ──────────────────────────────────────────────────
+      # ── 2. Set up Node.js 20 ───────────────────────────────────────────────
       - name: Set up Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
 
-      # ── 3. Install dependencies ────────────────────────────────────────────
+      # ── 3. Install all dependencies ────────────────────────────────────────
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
-      # ── 4. Build Next.js ───────────────────────────────────────────────────
+      # ── 4. Build Next.js (needs RAM — done here, NOT on the server) ────────
       - name: Build Next.js application
         run: npm run build
         env:
+          NODE_ENV: production
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
 
-      # ── 5a. Deploy via FTP (primary method — works with no Node.js on server)
-      #        Upload the built .next output + source files to public_html.
+      # ── 5. Prune to production deps only (smaller upload) ─────────────────
+      - name: Prune to production dependencies
+        run: npm prune --production --legacy-peer-deps
+
+      # ── 6. FTP Deploy — uploads everything including pre-built .next/ ──────
       #
-      #  Required GitHub secrets:
-      #    FTP_HOST      → your HostKenya FTP hostname (e.g. ftp.yoursite.com)
-      #    FTP_USERNAME  → FTP username (usually same as cPanel username: rexkelly)
-      #    FTP_PASSWORD  → FTP password (your cPanel password)
+      #  The server NEVER needs to run `npm run build` — the built .next/
+      #  folder is uploaded here. Server only runs `next start` via server.js.
+      #
+      #  Add these 3 secrets in GitHub → Settings → Secrets → Actions:
+      #    FTP_HOST      → HostKenya FTP hostname (e.g. ftp.yoursite.com)
+      #    FTP_USERNAME  → your cPanel username  (rexkelly)
+      #    FTP_PASSWORD  → your cPanel password
       # ────────────────────────────────────────────────────────────────────────
-      - name: Deploy via FTP to public_html
+      - name: Deploy via FTP to /portfolio directory
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./
-          server-dir: /public_html/
+          server-dir: /portfolio/
           exclude: |
             **/.git*
             **/.git*/**
-            **/node_modules/**
             **/coverage/**
-            **/.env*
             **/*.log
-        continue-on-error: true  # Don't fail the whole workflow if FTP isn't configured yet
+            **/tmp/**
 
-      # ── 5b. Trigger cPanel Git Deployment (alternative method) ─────────────
-      #        If you have cPanel's Git Version Control set up pointing to this
-      #        repo, this call tells it to pull and run .cpanel.yml tasks.
-      #
-      #  Required GitHub secrets:
-      #    CPANEL_USERNAME  → cPanel username (rexkelly)
-      #    CPANEL_TOKEN     → cPanel API token (Security → Manage API Tokens)
-      #    CPANEL_DOMAIN    → your cPanel hostname or server IP
-      #    CPANEL_REPO_DIR  → absolute server path of the cloned repo
-      #                       (e.g. /home/rexkelly/portfolio)
-      # ────────────────────────────────────────────────────────────────────────
-      - name: Trigger cPanel Git Deployment (optional)
-        if: ${{ secrets.CPANEL_TOKEN != '' }}
-        run: |
-          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
-            -H "Authorization: cpanel ${{ secrets.CPANEL_USERNAME }}:${{ secrets.CPANEL_TOKEN }}" \
-            "https://${{ secrets.CPANEL_DOMAIN }}:2083/execute/VersionControl/create_deployment?repository_root=${{ secrets.CPANEL_REPO_DIR }}")
-          echo "cPanel UAPI response: $HTTP_CODE"
-
-      # ── 6. Summary ─────────────────────────────────────────────────────────
+      # ── 7. Summary ─────────────────────────────────────────────────────────
       - name: Deployment summary
         run: |
-          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-          echo "✅  Deploy workflow finished"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "✅  Build + Deploy complete"
+          echo "    .next/ folder uploaded — server runs next start"
           echo "    Commit : ${{ github.sha }}"
           echo "    Branch : ${{ github.ref_name }}"
           echo "    Actor  : ${{ github.actor }}"
-          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

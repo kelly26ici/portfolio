@@ -6,5 +6,4 @@ deployment:
     - /bin/cp -R * $DEPLOYPATH/
     - /bin/cp .env $DEPLOYPATH/ 2>/dev/null || true
     - /bin/cp .env.local $DEPLOYPATH/ 2>/dev/null || true
-    - cd $DEPLOYPATH && /usr/local/bin/npm install --legacy-peer-deps 2>/dev/null || cd $DEPLOYPATH && npm install --legacy-peer-deps
-    - cd $DEPLOYPATH && /usr/local/bin/npm run build 2>/dev/null || cd $DEPLOYPATH && npm run build
+    - cd $DEPLOYPATH && /usr/local/bin/npm install --omit=dev --legacy-peer-deps 2>/dev/null || cd $DEPLOYPATH && npm install --omit=dev --legacy-peer-deps
