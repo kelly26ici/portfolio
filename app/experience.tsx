@@ -1,13 +1,12 @@
 "use client"
-import { useRef } from "react"
-import { motion, useScroll, useSpring } from "framer-motion"
+import { useState } from "react"
 import FadeDown from "@/components/animations/FadeDown"
 
 interface ExperienceItem {
   id: number
-  company: string
+  period: string
   role: string
-  date: string
+  context: string
   description: string
   skills: string[]
 }
@@ -15,123 +14,135 @@ interface ExperienceItem {
 const experiences: ExperienceItem[] = [
   {
     id: 1,
-    company: "Production Solutions & Client Engineering",
+    period: "2024 to now",
     role: "AI/ML & Software Engineer",
-    date: "2024 - present",
+    context: "Client Projects & Freelance",
     description:
-      "I architect, implement, and deploy practical AI applications and backend microservices for clients. I engineer production RAG systems with Qdrant, Pinecone, and FAISS, utilizing hybrid retrieval and cross-encoder reranking to ensure high precision and verified citations. I build low-latency asynchronous APIs with FastAPI, Python, and Redis state caches.",
+      "I build AI-powered applications and backend systems for clients. Most of my work involves setting up retrieval pipelines where AI can search through a client's documents, knowledge base, or product catalog and give accurate, cited answers. I also build the backend APIs that power these systems.",
     skills: ["Python", "FastAPI", "PyTorch", "LangChain", "Qdrant", "Redis", "Docker"],
   },
   {
     id: 2,
-    company: "Client Systems & Real-World Integrations",
-    role: "AI Agent & Automation Systems Architect",
-    date: "2024 - present",
+    period: "2024 to now",
+    role: "Autonomous Agent Builder",
+    context: "WhatsApp, Telegram & M-Pesa Systems",
     description:
-      "I engineer multi-agent state machines and cyclic workflows using LangGraph for autonomous business operations. I integrate AI reasoning engines directly with real-world messaging platforms (WhatsApp Cloud API, Telegram Bot API) and payment gateways (Safaricom M-Pesa Daraja), automating user interactions from initial query to payment settlement.",
+      "This is the work I enjoy most. I connect AI models to real platforms people actually use — WhatsApp, Telegram, and M-Pesa. So instead of a chatbot that just answers questions, the agent can also check a database, send a payment request, confirm a booking, and follow up automatically. Samantha (my real estate assistant) is the biggest example of this.",
     skills: ["LangGraph", "WhatsApp Cloud API", "Telegram Bot API", "M-Pesa Daraja", "PostgreSQL", "Supabase"],
   },
   {
     id: 3,
-    company: "Applied AI Research & Open-Source",
-    role: "Machine Learning & Local Inference Specialist",
-    date: "2023 - present",
+    period: "2023 to now",
+    role: "Local AI Model Researcher",
+    context: "Private & Open Source Projects",
     description:
-      "I research, benchmark, and deploy optimized local LLM runtimes using Ollama, llama.cpp, and vLLM. I evaluate GGUF/AWQ model quantization, explore memory-efficient inference strategies, and engineer air-gapped private search architectures for privacy-sensitive enterprise environments.",
+      "I experiment with running large language models locally on my own machine — no cloud required. I test different quantized model formats, compare inference speeds, and build private search systems where data never leaves the device. Useful for clients who need air-gapped, privacy-sensitive setups.",
     skills: ["llama.cpp", "Ollama", "vLLM", "Hugging Face", "scikit-learn", "Linux"],
   },
   {
     id: 4,
-    company: "Mama Ngina University College / Kenyatta University",
-    role: "Computer Science Scholar",
-    date: "2024 - Expected 2029",
+    period: "2024 to 2029",
+    role: "Computer Science Student",
+    context: "Mama Ngina University College / Kenyatta University",
     description:
-      "I study algorithmic efficiency, data structures, computational complexity, distributed systems, and computer architecture at university, providing strong academic and theoretical foundations to my production engineering work.",
+      "Studying CS formally gives me a solid theoretical base to understand why things work the way they do — algorithms, data structures, distributed systems, and computational thinking. I combine this with hands-on self-learning from papers, open source projects, and real client work.",
     skills: ["Algorithms", "Data Structures", "Distributed Systems", "Computer Science"],
   },
 ]
 
 export default function Experience() {
-  const containerRef = useRef<HTMLDivElement>(null)
+  const [openId, setOpenId] = useState<number | null>(1)
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start center", "end center"],
-  })
-
-  useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  })
+  const toggle = (id: number) => {
+    setOpenId(openId === id ? null : id)
+  }
 
   return (
     <section
       id="experience"
-      className="w-full max-w-7xl mx-auto py-24 md:py-32 cursor-default bg-background relative border-t border-surface-border dark:border-charcoal"
-      ref={containerRef}
+      className="w-full max-w-7xl mx-auto py-20 md:py-28 cursor-default bg-background relative border-t border-surface-border dark:border-charcoal"
     >
       <FadeDown>
-        <div className="max-w-7xl mx-auto px-6 md:px-12 mb-16 md:mb-20 w-full text-left">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 mb-12 md:mb-16 w-full text-left">
           <div className="flex items-center gap-2.5 mb-3">
             <span className="w-2.5 h-2.5 rounded-full bg-gold shadow-[0_0_8px_#D4AF37]"></span>
             <h2 className="font-coconat text-xs font-bold tracking-[0.25em] text-gold uppercase">
-              Proven Track Record
+              What I Have Been Building
             </h2>
           </div>
-          <h3 className="font-cinzel text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary tracking-tight">
-            My Engineering Experience
+          <h3 className="font-cinzel text-3xl md:text-5xl font-bold text-text-primary tracking-tight">
+            My Experience
           </h3>
-          <p className="font-forum text-text-secondary text-base md:text-lg max-w-3xl mt-4 font-normal leading-relaxed">
-            How I deliver robust AI systems, agentic automation, and real-world software integrations
-            across client projects, open-source initiatives, and systems research.
+          <p className="font-forum text-text-secondary text-base md:text-lg max-w-3xl mt-3 font-normal leading-relaxed">
+            A mix of client work, personal research, and formal education. Click any role to read more.
           </p>
         </div>
       </FadeDown>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative group/list flex flex-col">
-        {experiences.map((exp, index) => {
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col gap-3">
+        {experiences.map((exp) => {
+          const isOpen = openId === exp.id
           return (
-            <motion.div
+            <div
               key={exp.id}
-              initial={{ opacity: 0, y: 30, filter: "blur(4px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, delay: index * 0.1 }}
-              className="group/item relative grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 p-6 md:p-8 -mx-6 md:-mx-8 rounded-2xl transition-all duration-400 hover:!opacity-100 hover:!blur-none group-hover/list:opacity-40 group-hover/list:blur-[1px] hover:bg-surface/90 dark:hover:bg-deep-onyx/90 border border-transparent hover:border-gold/40 shadow-xs hover:shadow-[0_8px_30px_rgba(212,175,55,0.12)] mb-4"
+              className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
+                isOpen
+                  ? "border-gold/50 bg-surface/90 dark:bg-deep-onyx/90 shadow-[0_8px_30px_rgba(212,175,55,0.12)]"
+                  : "border-surface-border dark:border-charcoal bg-surface/60 dark:bg-deep-onyx/60 hover:border-gold/30"
+              }`}
             >
-              {/* Left Column: Timeline */}
-              <div className="md:col-span-1 pt-1 md:pt-2">
-                <span className="font-coconat text-xs font-bold tracking-widest text-gold-hover dark:text-gold uppercase bg-gold/10 px-3 py-1.5 rounded-full border border-gold/30 inline-block">
-                  {exp.date}
-                </span>
-              </div>
-
-              {/* Right Column: Role Details */}
-              <div className="md:col-span-3 flex flex-col">
-                <h4 className="font-amagro text-2xl font-bold text-text-primary tracking-wide mb-1.5 group-hover/item:text-gold transition-colors">
-                  {exp.role}
-                </h4>
-                <h5 className="font-messapia text-xs font-semibold text-text-muted tracking-widest uppercase mb-4">
-                  {exp.company}
-                </h5>
-
-                <p className="font-forum text-base text-text-secondary font-normal leading-relaxed mb-5">
-                  {exp.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2">
-                  {exp.skills.map((skill, i) => (
-                    <span
-                      key={i}
-                      className="font-coconat text-xs font-bold bg-surface-raised dark:bg-charcoal/50 text-text-primary px-3 py-1 rounded-lg border border-surface-border dark:border-charcoal uppercase tracking-wider group-hover/item:border-gold/30"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+              {/* Accordion Header — always visible */}
+              <button
+                className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 cursor-pointer"
+                onClick={() => toggle(exp.id)}
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-5 flex-1 min-w-0">
+                  <span className="font-coconat text-xs font-bold tracking-widest text-gold-hover dark:text-gold uppercase bg-gold/10 px-3 py-1.5 rounded-full border border-gold/30 shrink-0">
+                    {exp.period}
+                  </span>
+                  <div className="min-w-0">
+                    <p className="font-ortica text-base md:text-lg font-bold text-text-primary leading-tight">
+                      {exp.role}
+                    </p>
+                    <p className="font-messapia text-xs text-text-muted uppercase tracking-wider mt-0.5">
+                      {exp.context}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+
+                {/* Chevron */}
+                <span
+                  className={`shrink-0 w-7 h-7 rounded-full border flex items-center justify-center transition-all duration-300 ${
+                    isOpen
+                      ? "border-gold/50 text-gold rotate-180"
+                      : "border-surface-border dark:border-charcoal text-text-muted"
+                  }`}
+                >
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </button>
+
+              {/* Accordion Body — only shows when open */}
+              {isOpen && (
+                <div className="px-6 pb-6 border-t border-surface-border/60 dark:border-charcoal/60">
+                  <p className="font-forum text-base text-text-secondary font-normal leading-relaxed mt-5 mb-5">
+                    {exp.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {exp.skills.map((skill, i) => (
+                      <span
+                        key={i}
+                        className="font-coconat text-xs font-bold bg-surface-raised dark:bg-charcoal/50 text-text-primary px-3 py-1 rounded-lg border border-gold/25 uppercase tracking-wider"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           )
         })}
       </div>
