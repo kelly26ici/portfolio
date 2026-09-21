@@ -35,13 +35,19 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
 
-      # ── 5. Clean up node_modules & cache to ensure lightning fast FTP ──────
-      - name: Clean up heavy non-production files
+      # ── 5. Prepare standalone bundle (standalone output requires manual copy) ──
+      - name: Prepare standalone deployment bundle
         run: |
-          rm -rf node_modules
+          # Next.js standalone output does NOT auto-copy public/ or .next/static/
+          # These must be manually placed inside .next/standalone/
+          cp -r public .next/standalone/public
+          cp -r .next/static .next/standalone/.next/static
+          # Remove heavy non-essential files (keep standalone bundle intact)
           rm -rf .next/cache
+          # Passenger restart trigger
           mkdir -p tmp
           touch tmp/restart.txt
+
 
       # ── 6. FTP Deploy ──────────────────────────────────────────────────────
       - name: Deploy via FTP to portfolio directory
@@ -56,10 +62,12 @@ jobs:
           exclude: |
             **/.git*
             **/.git*/**
+            **/node_modules/**
             **/coverage/**
             **/*.log
             **/README.md
             **/CHECKPOINT.md
+
 
       # ── 7. Summary ─────────────────────────────────────────────────────────
       - name: Deployment summary
