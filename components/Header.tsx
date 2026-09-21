@@ -101,7 +101,21 @@ export default function Header() {
               })}
             </nav>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
+              {/* Telegram Header Quick Link */}
+              <a
+                href="https://t.me/Lucifers_cousin"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold/10 hover:bg-gold/20 text-gold border border-gold/30 text-xs font-coconat font-bold transition-all"
+                title="Connect on Telegram (@Lucifers_cousin)"
+              >
+                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.939z" />
+                </svg>
+                <span>Telegram</span>
+              </a>
+
               {/* Theme Toggle */}
               <button
                 className="cursor-pointer text-text-secondary hover:text-gold transition-colors duration-200 p-1.5 rounded-full hover:bg-gold/10"
@@ -131,9 +145,9 @@ export default function Header() {
               </button>
             </div>
 
-            {/* Mobile Menu */}
-            <div className={`${isOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"} md:hidden transform absolute top-16 right-4 z-50 origin-top-right transition-all duration-300 ease-in-out`}>
-              <div className="flex flex-col gap-4 bg-surface dark:bg-deep-onyx border border-surface-border dark:border-charcoal p-6 rounded-2xl shadow-2xl w-52">
+            {/* Mobile Menu — Translucent Frosted Glass */}
+            <div className={`${isOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"} lg:hidden transform absolute top-16 right-4 z-50 origin-top-right transition-all duration-300 ease-in-out`}>
+              <div className="flex flex-col gap-3 bg-surface/75 dark:bg-deep-onyx/75 backdrop-blur-2xl border border-surface-border/60 dark:border-gold/30 p-5 rounded-2xl shadow-[0_16px_40px_rgba(0,0,0,0.7)] w-56">
                 {shortCut.map((item, index) => {
                   const isActive = activeSection === item.name.toLowerCase()
                   return (
@@ -141,8 +155,8 @@ export default function Header() {
                       onClick={() => { handleScroll(item.link); setIsOpen(false); }}
                       key={index}
                       className={`
-                        ${isActive ? "text-gold font-bold" : "text-text-secondary font-medium hover:text-gold"}
-                        cursor-pointer font-messapia text-xs uppercase tracking-widest flex items-center gap-2 py-1.5 transition-colors duration-200 text-left
+                        ${isActive ? "text-gold font-bold bg-gold/10" : "text-text-secondary font-medium hover:text-gold hover:bg-gold/5"}
+                        cursor-pointer font-messapia text-xs uppercase tracking-widest flex items-center gap-2 px-3 py-2 rounded-xl transition-all duration-200 text-left
                       `}
                     >
                       {isActive && <span className="w-1.5 h-1.5 rounded-full bg-gold" />}
@@ -150,6 +164,19 @@ export default function Header() {
                     </button>
                   )
                 })}
+                <div className="pt-2 mt-1 border-t border-surface-border/40 dark:border-charcoal">
+                  <a
+                    href="https://t.me/Lucifers_cousin"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-3 py-2 rounded-xl bg-gold/10 text-gold text-xs font-coconat font-bold hover:bg-gold/20 transition-all"
+                  >
+                    <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.939z" />
+                    </svg>
+                    <span>Telegram Me</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
