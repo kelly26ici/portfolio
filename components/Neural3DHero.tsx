@@ -24,7 +24,7 @@ interface Connection3D {
 export default function Neural3DHero() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
-  const [activeTelemetry, setActiveTelemetry] = useState({
+  const [activeTelemetry] = useState({
     activeNodes: 96,
     latentDim: "1536-D",
     inferenceLatency: "42ms",

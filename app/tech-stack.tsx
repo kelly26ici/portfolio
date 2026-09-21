@@ -49,7 +49,7 @@ export default function TechStack() {
             <div className="lg:w-1/3">
               <FadeDown delay={idx * 0.04}>
                 <div className="inline-block px-3 py-1 bg-gold/10 border border-gold/30 text-gold-hover dark:text-gold rounded-full font-coconat text-xs font-bold uppercase tracking-widest mb-3">
-                  0{idx + 1} // Domain
+                  0{idx + 1} {"//"} Domain
                 </div>
                 <h4 className="font-ortica text-2xl font-bold text-text-primary tracking-tight mb-2">
                   {category.title}

@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "server.js",
+    "app.js",
+    "deploy_active_ftp.py",
   ]),
 ]);
 

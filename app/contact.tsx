@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect, useCallback, useRef } from "react"
+import { useState, useEffect, useRef } from "react"
 import AlertMessage from "@/components/Alert"
 import FadeDown from "@/components/animations/FadeDown"
 import ReactMarkdown from "react-markdown"
@@ -38,7 +38,7 @@ export default function Contact() {
     if (savedMessages) {
       try {
         const parsed = JSON.parse(savedMessages)
-        const formattedMessages = parsed.map((msg: any) => ({
+        const formattedMessages = parsed.map((msg: ChatMessage) => ({
           ...msg,
           timestamp: new Date(msg.timestamp),
         }))
@@ -444,11 +444,11 @@ export default function Contact() {
                         <ReactMarkdown
                           remarkPlugins={[remarkGfm]}
                           components={{
-                            p: ({ node, ...props }) => <p className="mb-2 last:mb-0" {...props} />,
-                            strong: ({ node, ...props }) => (
+                            p: ({ ...props }) => <p className="mb-2 last:mb-0" {...props} />,
+                            strong: ({ ...props }) => (
                               <strong className="font-bold text-text-primary" {...props} />
                             ),
-                            a: ({ node, ...props }) => (
+                            a: ({ ...props }) => (
                               <a
                                 className="text-gold underline hover:opacity-80 font-bold"
                                 target="_blank"
