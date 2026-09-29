@@ -117,35 +117,35 @@
 
 ## 5. Step-by-Step Refactor Roadmap (Current Sprint)
 
-### Step 1: Checkpoint Documentation (This file) [COMPLETED]
-- Comprehensive documentation of all history, findings, and rules.
+### Step 1: Checkpoint Documentation [COMPLETED]
+- Comprehensive documentation of all history, findings, and rules committed in `23ad921`.
 
-### Step 2: Increase Mobile Sidebar Transparency (`components/Header.tsx`)
-- The mobile menu drawer currently uses an opaque background (`dark:bg-deep-onyx`).
-- Refactor to a modern, translucent frosted glass finish (`bg-surface/75 dark:bg-deep-onyx/75 backdrop-blur-2xl border-gold/20 shadow-2xl`).
+### Step 2: Increase Mobile Sidebar Transparency (`components/Header.tsx`) [COMPLETED]
+- Mobile menu drawer refactored to translucent frosted glass with backdrop blur (`bg-surface/75 dark:bg-deep-onyx/75 backdrop-blur-2xl border-surface-border/60 dark:border-gold/30 shadow-[0_16px_40px_rgba(0,0,0,0.7)]`).
+- Added Telegram quick link button in header and mobile drawer. Committed in `b3a711a`.
 
-### Step 3: Uncomment and Activate Telegram Links
-- Ensure Telegram links (`https://t.me/Lucifers_cousin`) and bot references (`@jbee_vector1_bot`) are properly connected, visible, and uncommented across Header, Hero, Footer, and Contact sections.
+### Step 3: Uncomment and Activate Telegram Links [COMPLETED]
+- Active personal Telegram (`https://t.me/Lucifers_cousin`) and bot project (`@jbee_vector1_bot`) verified and highlighted across Header, Hero, Footer, and Contact.
 
-### Step 4: Refactor Tech Stack Section (`app/tech-stack.tsx`)
-- **Problem:** 8 vertical blocks (01 to 08) cause endless vertical scrolling.
-- **Solution:**
-  - Replace the 8 massive vertical blocks with a compact, modern categorized tab selector or streamlined interactive grid.
-  - Replace generic letter circles with authentic SVG brand logos (Python, PyTorch, LangChain, LangGraph, Qdrant, Docker, FastAPI, React, Next.js, OpenAI, Anthropic, etc.).
-  - Add simple, human explanations (e.g. explaining LangChain & LangGraph simply, and contrasting autonomous agents vs basic chatbots).
+### Step 4: Refactor Tech Stack Section (`app/tech-stack.tsx`) [COMPLETED]
+- Replaced the 8 massive vertical blocks with an interactive tab selector (AI & Agents, Machine Learning & Python, Vector DBs & Memory, APIs & Integrations).
+- Added real SVG logos for Python, PyTorch, LangChain, Docker, FastAPI, and more.
+- Added a plain-English surface-level explainer contrasting **Basic Chatbots vs. Autonomous AI Agents**. Committed in `54ea656`.
 
-### Step 5: Refactor Engineering Experience Section (`app/experience.tsx`)
-- **Problem:** Currently takes up excessive vertical scroll space.
-- **Solution:**
-  - Transform into an elegant, space-efficient accordion / collapsible dropdown format or compact card layout with company/tech logos.
-  - Simplify wording to be natural, humble, and conversational.
+### Step 5: Refactor Engineering Experience Section (`app/experience.tsx`) [COMPLETED]
+- Replaced long vertical scroll blocks with an interactive, space-efficient accordion dropdown.
+- Users can click any role to expand details. Plain English explanations without enterprise buzzwords. Committed in `54ea656`.
 
-### Step 6: Simplify Tone & Remove Jargon Across All Pages
-- Review and refine copy in `app/hero.tsx`, `app/about.tsx`, `app/project.tsx`, and `app/contact.tsx`:
-  - Highlight the student + passionate self-learner journey in Nairobi.
-  - Remove dashes (`—`).
-  - Explain autonomous agents, real estate WhatsApp automation (Samantha), and payment integrations (M-Pesa) in everyday language.
+### Step 6: Simplify Tone & Remove Jargon Across All Pages [COMPLETED]
+- `app/hero.tsx`: Conversational greeting, humble student & builder persona, eliminated dashes and corporate jargon. Committed in `8208476`.
+- `app/about.tsx`: Grounded narrative focusing on computer science studies at Mama Ngina / Kenyatta University + late-night self-learning in Nairobi. Committed in `a387929`.
+- `app/project.tsx`: Relatable project descriptions (Samantha, OmniAgent, CortexRAG, TelePulse, DarajaPay, LocalLLM Nexus) without jargon or dashes. Committed in `ad6d741`.
+- `app/contact.tsx` & `app/api/chat/route.ts`: Friendly contact prompts and authentic AI assistant knowledge base. Committed in `559a824`.
 
-### Step 7: Build Verification & Fresh Deploy Zip
-- Run `npm run build` locally to verify 0 errors.
-- Package the updated standalone bundle into `portfolio-deploy.zip` and copy to `/sdcard/Download/` for easy cPanel extraction.
+### Step 7: Build Verification & Fresh Deploy Zip [COMPLETED]
+- Ran full production build (`npm run build`) &rarr; **Compiled successfully in 23.9s with 0 errors**.
+- Packaged complete self-contained standalone bundle into `portfolio-deploy.zip` (24 MB).
+- Automatically copied to phone storage:
+  - `/sdcard/Download/portfolio-deploy.zip`
+  - `/sdcard/portfolio-deploy.zip`
+  - `/data/data/com.termux/files/home/portfolio-deploy.zip`
