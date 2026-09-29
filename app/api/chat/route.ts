@@ -12,56 +12,42 @@ You are Kelly's AI Assistant, an interactive engineering representative on Kelly
 Your role is to answer questions from recruiters, clients, and fellow engineers about Kelly's background, projects, machine learning expertise, and software engineering capabilities. Always be professional, technically precise, polite, and enthusiastic.
 
 Core Facts About Kelly:
-- Identity: Kelly, an AI/ML and software engineer based in Nairobi, Kenya.
-- Specialization: Practical AI systems, agentic workflows, RAG architectures, model serving, vector databases, and real-world API/payment integrations.
-- Primary Language: Python (Advanced). Also proficient in TypeScript, SQL, and Bash.
+- Identity: Kelly, a computer science student and self-taught software builder in Nairobi, Kenya.
+- Tone: Friendly, grounded, humble, and practical. Avoid enterprise jargon and dashes. Speak as if talking to someone across a table.
+- Specialization: Practical AI applications, autonomous agents, RAG search engines, and real-world integrations (WhatsApp, Telegram, and Safaricom M-Pesa).
+- Primary Language: Python. Also builds with TypeScript, SQL, and modern web frameworks.
 - GitHub: https://github.com/kelly26ici
 - Portfolio Repository: https://github.com/kelly26ici/portfolio
 - WhatsApp: +254 794 582 488 (https://wa.me/254794582488)
 - Telegram: @Lucifers_cousin (https://t.me/Lucifers_cousin)
 - Email: rexk638@gmail.com
-- Core Machine Learning: Comprehensive knowledge of PyTorch, TensorFlow, scikit-learn, Hugging Face Transformers, NumPy, Pandas, SciPy, XGBoost, LightGBM, OpenCV, spaCy.
-- Agentic Frameworks: LangGraph, LangChain, LlamaIndex, AutoGen, CrewAI, multi-agent state machines, structured tool calling.
-- Vector Databases: Qdrant, Pinecone, FAISS, Chroma, Milvus, Weaviate, pgvector.
-- LLM Providers & Inference: OpenAI (GPT-4o), Anthropic Claude (3.7 / 3.5 Sonnet), Google Gemini (2.0 / 1.5), Groq (LPU fast inference), Ollama, llama.cpp, vLLM, DeepSeek.
-- Backend & Microservices: FastAPI, Flask, Django, Node.js, RESTful APIs, WebSockets, Celery, Redis Streams.
-- Databases & State: PostgreSQL, Supabase, Redis (conversational memory & state caching), MongoDB.
-- Real-World Integrations: WhatsApp Cloud API, Telegram Bot API (@jbee_vector1_bot), Safaricom M-Pesa / Daraja API, Webhooks.
-- Academic Background: Pursuing Computer Science at Mama Ngina University College / Kenyatta University (expected graduation 2029) - though his portfolio primarily focuses on his production engineering work and client solutions.
-
-Featured Projects:
-1. Samantha: AI-powered real-estate assistant on WhatsApp Cloud API. Features semantic property discovery with Qdrant, property comparisons, customer memory in Redis/Supabase, and automated booking fee payments via Safaricom M-Pesa STK push.
-2. OmniAgent Core: Enterprise multi-agent orchestration engine using LangGraph and FastAPI with tool use, Redis state machines, and human-in-the-loop governance.
-3. CortexRAG: High-throughput multimodal RAG engine combining dense vector search, sparse BM25, cross-encoder reranking, and citation attribution.
-4. TelePulse AI: High-concurrency automated Telegram bot (@jbee_vector1_bot) using Python, Telegram Bot API, Groq inference, and Redis Streams for operations and support triage.
-5. DarajaPay AI: Fintech gateway pairing Safaricom M-Pesa (Daraja API) with scikit-learn anomaly detection for invoice reconciliation and fraud mitigation.
-6. LocalLLM Nexus: Air-gapped, on-premises local model serving suite packaging llama.cpp, Ollama, and vLLM with OpenAI-compatible streaming endpoints.
+- Academic: Studying Computer Science at Mama Ngina University College / Kenyatta University (Graduation 2029), combined with continuous hands-on self learning.
 `
 
 function generateSimulatedResponse(question: string): string {
   const q = question.toLowerCase()
 
   if (q.includes("samantha")) {
-    return "### 🏡 Samantha: Real Estate AI Assistant on WhatsApp\n\n**Samantha** is one of Kelly's flagship public projects! It operates directly inside **WhatsApp** (via the WhatsApp Cloud API) to transform property discovery into an effortless conversational experience.\n\n**Key Architectural Highlights:**\n- **Vector Semantic Search:** Uses **Qdrant** embeddings so users can search listings in natural language (e.g., *'spacious 2-bedroom with natural light under 40k'*).\n- **Customer Memory:** Remembers user preferences, past searches, and interaction state using **Redis** and **Supabase/PostgreSQL**.\n- **M-Pesa Payment Integration:** Seamlessly triggers reservation fees via **Safaricom M-Pesa / Daraja STK Push** directly within the chat flow.\n- **Business Automation:** Automates CRM lead tracking and scheduling for real-estate operators.\n\nWould you like to know more about the tech stack or how Kelly implements multi-agent routing?"
+    return "### 🏡 Samantha: Real Estate AI Assistant on WhatsApp\n\n**Samantha** is one of Kelly's favorite projects! It runs directly inside **WhatsApp** (using the WhatsApp Cloud API) to make house hunting simple and conversational.\n\n**How it works:**\n- **Natural Search:** Uses **Qdrant** vector search so users can describe what they want in plain text (e.g. *'2-bedroom with natural light under 40k'*).\n- **Remembers Preferences:** Remembers previous chats and requirements using **Redis** and **Supabase** so users do not repeat themselves.\n- **M-Pesa Payments:** Clients can pay viewing or booking deposits directly via an **M-Pesa STK push** prompt.\n- **Direct Owner Alerts:** Notifies real estate managers instantly when a qualified lead is ready.\n\nFeel free to ask more about how it was built!"
   }
 
   if (q.includes("project") || q.includes("work") || q.includes("built")) {
-    return "Kelly has engineered a broad range of production-grade systems across several domains:\n\n1. **Samantha (WhatsApp Real Estate Assistant)** - Combines conversational AI, Qdrant vector search, customer memory, and M-Pesa payments.\n2. **OmniAgent Core** - Multi-agent orchestration engine built with **LangGraph**, **FastAPI**, and **Redis** state machines with human-in-the-loop approvals.\n3. **CortexRAG** - High-throughput hybrid RAG engine with dense vector retrieval (**Qdrant / Pinecone / FAISS**), BM25 lexical search, and cross-encoder reranking.\n4. **TelePulse AI** - High-concurrency automated **Telegram bot** utilizing Groq LPU inference, Redis streams, and real-time database queries.\n5. **DarajaPay AI** - Fintech reconciliation gateway integrating **Safaricom M-Pesa** with scikit-learn anomaly detection for fraud alerts.\n6. **LocalLLM Nexus** - Air-gapped private model serving runtime using **llama.cpp**, **Ollama**, and **vLLM**.\n\nWhich project would you like to explore deeper?"
+    return "Here are the main projects Kelly has built:\n\n1. **Samantha (WhatsApp Real Estate Assistant):** Conversational house hunting with vector search and automated M-Pesa payments.\n2. **OmniAgent:** A multi-agent engine built with LangGraph where specialized AI agents collaborate on research and code.\n3. **CortexRAG:** A fast document search tool that cites exact page paragraphs so answers are always verified.\n4. **TelePulse AI:** A live Telegram bot (@jbee_vector1_bot) that handles queries and database lookups in real time.\n5. **DarajaPay AI:** An M-Pesa payment gateway with machine learning checks to catch double-payments or fraud.\n6. **LocalLLM Nexus:** An offline setup using Ollama and llama.cpp to run AI models privately on your own computer.\n\nWhich one would you like to know more about?"
   }
 
   if (q.includes("stack") || q.includes("skill") || q.includes("python") || q.includes("tool") || q.includes("language")) {
-    return "### 🛠️ Kelly's Engineering Stack\n\nKelly is a **Python specialist** with deep expertise across the modern AI and backend ecosystem:\n\n- **Machine Learning & Deep Learning:** PyTorch, TensorFlow, scikit-learn, Hugging Face Transformers, NumPy, Pandas, SciPy, XGBoost, LightGBM, OpenCV.\n- **Agentic AI & Orchestration:** LangGraph, LangChain, LlamaIndex, AutoGen, CrewAI, custom deterministic state machines.\n- **Vector Databases:** Qdrant, Pinecone, FAISS, Chroma, Milvus, Weaviate, pgvector.\n- **Model Inference:** OpenAI (GPT-4o), Anthropic Claude (3.7/3.5), Google Gemini, Groq, Ollama, llama.cpp, vLLM.\n- **Backend Microservices:** FastAPI, Flask, Django, Node.js, WebSockets, Celery, Redis Streams.\n- **Databases & State:** PostgreSQL, Supabase, Redis (state caching & memory), MongoDB.\n- **Real-World Integrations:** WhatsApp Cloud API, Telegram Bot API, Safaricom M-Pesa / Daraja, Webhooks."
+    return "### 🛠️ Kelly's Toolkit\n\nKelly writes mostly in **Python** with a focus on real-world AI and backend development:\n\n- **AI & Agents:** LangGraph, LangChain, OpenAI, Claude, LlamaIndex, Ollama, llama.cpp\n- **Machine Learning:** PyTorch, TensorFlow, scikit-learn, Hugging Face, Pandas, NumPy\n- **Vector Memory:** Qdrant, Pinecone, FAISS, Redis\n- **APIs & Backend:** FastAPI, Docker, PostgreSQL, Supabase, WebSockets\n- **Integrations:** WhatsApp Cloud API, Telegram Bot API, Safaricom M-Pesa Daraja"
   }
 
   if (q.includes("contact") || q.includes("hire") || q.includes("email") || q.includes("reach") || q.includes("location") || q.includes("kenya")) {
-    return "### 📬 Connecting with Kelly\n\nKelly is based in **Nairobi, Kenya** (UTC+3) and works with international and regional clients on production AI systems.\n\n- **GitHub:** [github.com/kelly26ici](https://github.com/kelly26ici) | Repo: [github.com/kelly26ici/portfolio](https://github.com/kelly26ici/portfolio)\n- **WhatsApp:** [+254 794 582 488](https://wa.me/254794582488)\n- **Telegram:** [@Lucifers_cousin](https://t.me/Lucifers_cousin)\n- **Direct Email:** [rexk638@gmail.com](mailto:rexk638@gmail.com)\n\nFeel free to reach out directly via WhatsApp, Telegram, or email!"
+    return "### 📬 Connecting with Kelly\n\nKelly is based in **Nairobi, Kenya** (UTC+3) and is open to freelance projects, collaborations, and contract roles.\n\n- **GitHub:** [github.com/kelly26ici](https://github.com/kelly26ici)\n- **WhatsApp:** [+254 794 582 488](https://wa.me/254794582488)\n- **Telegram:** [@Lucifers_cousin](https://t.me/Lucifers_cousin)\n- **Direct Email:** [rexk638@gmail.com](mailto:rexk638@gmail.com)\n\nFeel free to send a message anytime!"
   }
 
   if (q.includes("education") || q.includes("student") || q.includes("university") || q.includes("degree")) {
-    return "Kelly is pursuing **Computer Science at Mama Ngina University College / Kenyatta University** (expected graduation 2029). His studies reinforce rigorous foundations in algorithms, data structures, and distributed systems, though his portfolio is primarily dedicated to his real-world engineering work, client deployments, and practical AI systems."
+    return "Kelly is a **Computer Science student at Mama Ngina University College / Kenyatta University** (graduating around 2029). While school gives him strong foundations in algorithms and system architecture, he is passionate about self-learning, building practical open-source tools, and solving real problems with software."
   }
 
-  return "Thanks for asking! Kelly is an AI/ML and software engineer based in Nairobi, Kenya, specializing in practical AI systems, autonomous agents, RAG pipelines, and real-world API integrations (such as WhatsApp, Telegram Bots, and M-Pesa payments).\n\nYou can ask me about:\n- **Flagship & Client Projects** (Samantha, OmniAgent Core, CortexRAG, TelePulse AI, DarajaPay)\n- **Machine Learning & Agentic Stack** (PyTorch, LangGraph, Qdrant, Pinecone, FastAPI, vLLM)\n- **Collaboration & Contact** details\n\nHow can I help you today?"
+  return "Thanks for asking! Kelly is a computer science student and builder in Nairobi, Kenya. He builds practical AI tools, autonomous agents, and real-world software integrations like WhatsApp property assistants and M-Pesa payments.\n\nYou can ask me about:\n- **Projects** (Samantha, OmniAgent, CortexRAG, TelePulse, DarajaPay)\n- **Technologies** (Python, LangGraph, Qdrant, FastAPI, PyTorch)\n- **How to Connect** (WhatsApp, Telegram, or Email)\n\nHow can I help you today?"
 }
 
 export async function POST(req: NextRequest) {

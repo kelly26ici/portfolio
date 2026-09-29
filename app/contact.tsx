@@ -178,8 +178,8 @@ export default function Contact() {
             Let&apos;s Build Together
           </h3>
           <p className="font-forum text-text-secondary text-base md:text-lg max-w-2xl mt-4 font-normal leading-relaxed">
-            Interested in deploying production AI systems, autonomous agentic workflows,
-            RAG pipelines, or API integrations? Reach out directly or start a conversation with my interactive AI assistant.
+            Interested in building an AI project, a WhatsApp assistant, or an API integration?
+            Feel free to reach out directly or test my interactive AI assistant.
           </p>
         </div>
       </FadeDown>
@@ -197,7 +197,7 @@ export default function Contact() {
                 <div className="flex items-center gap-2 mb-4">
                   <span className="w-2.5 h-2.5 rounded-full bg-gold shadow-[0_0_8px_#D4AF37] animate-pulse"></span>
                   <span className="font-coconat text-xs font-bold text-gold uppercase tracking-widest">
-                    Location & Timezone
+                    Location &amp; Availability
                   </span>
                 </div>
 
@@ -205,12 +205,12 @@ export default function Contact() {
                   Nairobi, Kenya
                 </h4>
                 <p className="font-messapia text-xs text-text-muted mb-6 uppercase tracking-wider">
-                  East Africa Time (EAT • UTC+3) • Open to Global Remote Work
+                  East Africa Time (EAT • UTC+3) • Open to Remote Projects
                 </p>
 
                 <p className="font-forum text-sm md:text-base text-text-secondary font-normal leading-relaxed mb-6">
-                  I am available for consulting, full-time engineering roles, contract work,
-                  and client deployments of custom AI agents, vector search, and API integrations.
+                  I am open to freelance client projects, contract roles, and building useful tools.
+                  Whether you have an existing system to integrate or a new project idea, let us connect.
                 </p>
 
                 <div className="p-4 rounded-2xl bg-surface-raised dark:bg-charcoal/30 border border-surface-border dark:border-charcoal space-y-2.5 mb-6">
