@@ -195,10 +195,23 @@ export default function Hero() {
                 {quickStatsList.map((stat, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-3 bg-surface/90 dark:bg-deep-onyx/90 backdrop-blur-md border border-surface-border dark:border-charcoal p-3.5 rounded-xl shadow-sm hover:border-gold/40 transition-all duration-300"
+                    className="flex items-center gap-3 bg-surface/90 dark:bg-deep-onyx/90 backdrop-blur-md border border-surface-border dark:border-charcoal p-3 rounded-xl shadow-sm hover:border-gold/40 transition-all duration-300"
                   >
-                    <div className="bg-gold/10 text-gold-hover dark:text-gold p-2.5 rounded-lg flex-shrink-0">
-                      {stat.icon}
+                    {/* 3 real brand logos stacked side by side */}
+                    <div className="flex items-center gap-1 shrink-0">
+                      {stat.icons.map((src, j) => (
+                        <div
+                          key={j}
+                          className="w-6 h-6 rounded-md bg-surface-raised dark:bg-charcoal/60 border border-surface-border/50 flex items-center justify-center p-0.5"
+                        >
+                          <img
+                            src={src}
+                            alt=""
+                            className="w-4 h-4 object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                      ))}
                     </div>
                     <span className="font-forum text-xs font-semibold text-text-primary leading-tight">
                       {stat.message}
@@ -247,74 +260,18 @@ const socialMediaList = [
 const quickStatsList = [
   {
     message: "Python & Machine Learning",
-    icon: (
-      <svg
-        className="w-5 h-5"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
-        />
-      </svg>
-    ),
+    icons: ["/icons/python.svg", "/icons/pytorch.svg", "/icons/tensorflow.svg"],
   },
   {
     message: "Autonomous AI Agents",
-    icon: (
-      <svg
-        className="w-5 h-5"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="M13 10V3L4 14h7v7l9-11h-7z"
-        />
-      </svg>
-    ),
+    icons: ["/icons/langchain.svg", "/icons/langgraph.svg", "/icons/openai.svg"],
   },
   {
     message: "WhatsApp & M-Pesa Integrations",
-    icon: (
-      <svg
-        className="w-5 h-5"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
-        />
-      </svg>
-    ),
+    icons: ["/icons/whatsapp.svg", "/icons/mpesa.svg", "/icons/fastapi.svg"],
   },
   {
     message: "Local & Cloud Model Serving",
-    icon: (
-      <svg
-        className="w-5 h-5"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
-        />
-      </svg>
-    ),
+    icons: ["/icons/ollama.svg", "/icons/huggingface.svg", "/icons/docker.svg"],
   },
 ]

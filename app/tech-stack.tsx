@@ -64,8 +64,10 @@ export default function TechStack() {
               {/* Basic Chatbot Card */}
               <div className="p-5 rounded-2xl bg-surface dark:bg-surface-raised border border-surface-border dark:border-charcoal">
                 <div className="flex items-center gap-3 mb-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-text-muted/15 flex items-center justify-center text-text-secondary text-lg">
-                    💬
+                  <div className="w-8 h-8 rounded-lg bg-text-muted/15 flex items-center justify-center text-text-secondary">
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
                   </div>
                   <h5 className="font-coconat text-sm font-bold text-text-primary uppercase tracking-wider">
                     Basic Chatbot
@@ -81,8 +83,11 @@ export default function TechStack() {
               {/* Autonomous AI Agent Card */}
               <div className="p-5 rounded-2xl bg-surface dark:bg-surface-raised border border-gold/40 shadow-xs">
                 <div className="flex items-center gap-3 mb-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-gold/15 flex items-center justify-center text-gold text-lg">
-                    ⚡
+                  <div className="w-8 h-8 rounded-lg bg-gold/15 flex items-center justify-center text-gold">
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="3"/>
+                      <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+                    </svg>
                   </div>
                   <h5 className="font-coconat text-sm font-bold text-gold uppercase tracking-wider">
                     Autonomous AI Agent
