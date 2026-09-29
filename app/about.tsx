@@ -37,48 +37,48 @@ export default function About() {
                     <div className="flex items-center gap-2.5">
                       <span className="w-2.5 h-2.5 rounded-full bg-gold shadow-[0_0_8px_#D4AF37]"></span>
                       <span className="font-messapia text-xs font-bold text-text-secondary uppercase tracking-widest">
-                        SYS://ARCHITECT
+                        STUDENT // BUILDER
                       </span>
                     </div>
                     <span className="font-coconat text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-gold/10 text-gold-hover dark:text-gold border border-gold/30">
-                      KENYA
+                      NAIROBI, KENYA
                     </span>
                   </div>
 
-                  {/* Middle Cybernetic Blueprint Info */}
+                  {/* Middle Blueprint Info */}
                   <div className="relative z-10 my-auto flex flex-col gap-4">
                     <div className="p-4 rounded-2xl bg-surface-raised dark:bg-charcoal/40 border border-surface-border dark:border-charcoal">
                       <span className="font-coconat text-[10px] uppercase text-gold font-bold block mb-1 tracking-wider">
-                        Core Directive
+                        My Approach
                       </span>
                       <p className="font-forum text-sm font-semibold text-text-primary leading-snug">
-                        Bridging Foundational ML Models with Scalable Distributed Systems & Real-World Integrations.
+                        Combining university computer science studies with self taught curiosity to build practical AI tools.
                       </p>
                     </div>
 
                     <div className="space-y-2">
                       <div className="flex justify-between text-xs font-messapia">
-                        <span className="text-text-secondary">Primary Stack</span>
-                        <span className="font-coconat text-text-primary font-bold">Python • FastAPI • PyTorch</span>
+                        <span className="text-text-secondary">Primary Tools</span>
+                        <span className="font-coconat text-text-primary font-bold">Python, FastAPI, PyTorch</span>
                       </div>
                       <div className="flex justify-between text-xs font-messapia">
-                        <span className="text-text-secondary">Agent Engine</span>
-                        <span className="font-coconat text-text-primary font-bold">LangGraph • Custom Loops</span>
+                        <span className="text-text-secondary">Agent Frameworks</span>
+                        <span className="font-coconat text-text-primary font-bold">LangGraph, LangChain</span>
                       </div>
                       <div className="flex justify-between text-xs font-messapia">
-                        <span className="text-text-secondary">Vector Plane</span>
-                        <span className="font-coconat text-text-primary font-bold">Qdrant • Pinecone • FAISS</span>
+                        <span className="text-text-secondary">Vector Memory</span>
+                        <span className="font-coconat text-text-primary font-bold">Qdrant, Pinecone, FAISS</span>
                       </div>
                       <div className="flex justify-between text-xs font-messapia">
-                        <span className="text-text-secondary">Production Gateways</span>
-                        <span className="font-coconat text-text-primary font-bold">WhatsApp • Telegram • M-Pesa</span>
+                        <span className="text-text-secondary">Integrations</span>
+                        <span className="font-coconat text-text-primary font-bold">WhatsApp, Telegram, M-Pesa</span>
                       </div>
                     </div>
                   </div>
 
                   {/* Footer Status */}
                   <div className="relative z-10 pt-4 border-t border-surface-border dark:border-charcoal flex items-center justify-between">
-                    <span className="font-messapia text-xs text-text-secondary">AI Systems Engineer</span>
+                    <span className="font-messapia text-xs text-text-secondary">Student &amp; AI Builder</span>
                     <span className="font-coconat text-xs font-bold text-gold">github/kelly26ici</span>
                   </div>
                 </div>
@@ -99,11 +99,11 @@ export default function About() {
                     Who I Am
                   </h4>
                   <p className="font-forum text-sm md:text-base text-text-secondary leading-relaxed font-normal">
-                    I am a Kenya-based AI/ML and software engineer driven by building practical,
-                    high-impact AI applications, autonomous agents, and production automation. Rather than
-                    stopping at isolated prompt engineering or toy chatbots, I specialize in engineering
-                    robust software layers that connect frontier and local models directly with live data,
-                    vector stores, tools, APIs, and business workflows.
+                    I am a computer science student at Mama Ngina University College / Kenyatta University in Nairobi.
+                    Most of what I know came from deep curiosity: reading documentation, exploring open source repos
+                    late into the night, and testing things until they worked. I love building practical AI tools that do
+                    more than just write text. I focus on creating autonomous agents that can search information, answer
+                    questions accurately, and connect directly to systems like WhatsApp and M-Pesa.
                   </p>
                 </Fade>
               </div>
@@ -111,13 +111,13 @@ export default function About() {
               <div className="flex flex-col">
                 <Fade>
                   <h4 className="font-ortica text-xl md:text-2xl font-bold text-text-primary mb-3 flex items-center border-b border-surface-border dark:border-charcoal pb-3">
-                    Engineering Philosophy
+                    How I Work
                   </h4>
                   <p className="font-forum text-sm md:text-base text-text-secondary leading-relaxed font-normal">
-                    Real-world AI requires comprehensive engineering: resilient error handling, low-latency
-                    streaming, semantic vector memory, and stateful multi-step agent graphs. I engineer client
-                    solutions using Python, PyTorch, FastAPI, Qdrant, Redis state caches, and seamless communication
-                    channels like WhatsApp Cloud API, Telegram Bot API, and Safaricom M-Pesa.
+                    I believe in simplicity and real world usefulness. A lot of AI demos look impressive in a screenshot
+                    but fail the moment a customer asks an unexpected question. I focus on writing reliable code,
+                    handling errors gracefully, and keeping the technology easy to understand for everyone. You do not
+                    need confusing buzzwords when your system simply does what it was built to do.
                   </p>
                 </Fade>
               </div>
@@ -127,7 +127,7 @@ export default function About() {
             <div className="mt-12 md:mt-16">
               <Fade>
                 <h4 className="font-cinzel text-xl md:text-2xl font-bold text-text-primary mb-6 border-b border-surface-border dark:border-charcoal pb-3 border-l-4 border-l-gold pl-4">
-                  My Profile & Specialization
+                  My Profile &amp; Focus
                 </h4>
               </Fade>
 
@@ -212,10 +212,10 @@ export default function About() {
           <div className="mt-20 md:mt-28 pb-4 border-t border-surface-border dark:border-charcoal pt-6">
             <ScrollVelocity
               texts={[
-                "AI & Machine Learning Engineer",
-                "Agentic Systems & LangGraph Architect",
-                "Production RAG & Vector Search",
-                "Kenya • Real-World Client Integrations",
+                "Computer Science Student",
+                "Autonomous AI Agents",
+                "Python & LangGraph",
+                "Nairobi, Kenya • Practical AI Systems",
               ]}
               velocity={velocity}
               className="font-cinzel font-bold tracking-tight text-text-muted/30 dark:text-champagne/15"
