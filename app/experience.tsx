@@ -27,7 +27,7 @@ const experiences: ExperienceItem[] = [
     role: "Autonomous Agent Builder",
     context: "WhatsApp, Telegram & M-Pesa Systems",
     description:
-      "This is the work I enjoy most. I connect AI models to real platforms people actually use — WhatsApp, Telegram, and M-Pesa. So instead of a chatbot that just answers questions, the agent can also check a database, send a payment request, confirm a booking, and follow up automatically. Samantha (my real estate assistant) is the biggest example of this.",
+      "This is the work I enjoy most. I connect AI models to real platforms people actually use every day, like WhatsApp, Telegram, and M-Pesa. Instead of a chatbot that only answers questions, the agent can check a database, send a payment request, confirm a booking, and follow up automatically. Samantha (my real estate assistant) is the biggest example of this.",
     skills: ["LangGraph", "WhatsApp Cloud API", "Telegram Bot API", "M-Pesa Daraja", "PostgreSQL", "Supabase"],
   },
   {
@@ -36,7 +36,7 @@ const experiences: ExperienceItem[] = [
     role: "Local AI Model Researcher",
     context: "Private & Open Source Projects",
     description:
-      "I experiment with running large language models locally on my own machine — no cloud required. I test different quantized model formats, compare inference speeds, and build private search systems where data never leaves the device. Useful for clients who need air-gapped, privacy-sensitive setups.",
+      "I experiment with running large language models locally on my own machine with no cloud required. I test different quantized model formats, compare inference speeds, and build private search systems where data never leaves the device. Useful for clients who need private, air-gapped setups.",
     skills: ["llama.cpp", "Ollama", "vLLM", "Hugging Face", "scikit-learn", "Linux"],
   },
   {
@@ -45,7 +45,7 @@ const experiences: ExperienceItem[] = [
     role: "Computer Science Student",
     context: "Mama Ngina University College / Kenyatta University",
     description:
-      "Studying CS formally gives me a solid theoretical base to understand why things work the way they do — algorithms, data structures, distributed systems, and computational thinking. I combine this with hands-on self-learning from papers, open source projects, and real client work.",
+      "Studying computer science formally gives me a solid theoretical base to understand how software works under the hood, including algorithms, data structures, and distributed systems. I combine this with hands-on self-learning from open-source repositories and client work.",
     skills: ["Algorithms", "Data Structures", "Distributed Systems", "Computer Science"],
   },
 ]
