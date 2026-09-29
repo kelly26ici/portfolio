@@ -11,10 +11,10 @@ export default function Hero() {
 
   const texts = useMemo(
     () => [
-      "AI & Machine Learning Engineer",
-      "Agentic Systems Architect",
-      "LLM & RAG Systems Developer",
-      "Backend & Integrations Specialist",
+      "Computer Science Student",
+      "Autonomous AI Agent Developer",
+      "Python & Backend Builder",
+      "Lifelong Self-Learner",
     ],
     []
   )
@@ -66,7 +66,7 @@ export default function Hero() {
               <div className="flex flex-wrap items-center gap-3 mb-2">
                 <span className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-gold/10 border border-gold/30 text-gold-hover dark:text-gold rounded-full font-coconat text-[11px] font-bold tracking-widest uppercase">
                   <span className="w-2 h-2 rounded-full bg-gold shadow-[0_0_8px_#D4AF37] animate-pulse"></span>
-                  Nairobi, Kenya • Available for Production AI Engineering
+                  Nairobi, Kenya • Student &amp; AI Builder
                 </span>
               </div>
 
@@ -90,10 +90,9 @@ export default function Hero() {
 
               <div className="max-w-xl mt-3">
                 <p className="font-forum text-text-secondary text-base md:text-lg leading-relaxed font-normal">
-                  I engineer practical, production-grade AI systems, autonomous agents,
-                  and real-world software integrations. Rather than isolated chatbots, I build
-                  systems where state-of-the-art models connect directly with data, vector memory,
-                  tools, APIs, databases, and business operations.
+                  I am a computer science student and self taught builder in Nairobi.
+                  I create practical AI tools and autonomous agents that do real work,
+                  from helpful WhatsApp property assistants to automated payment systems.
                 </p>
               </div>
 
@@ -127,7 +126,7 @@ export default function Hero() {
                   onClick={() => handleScroll("techstack")}
                   className="cursor-pointer font-coconat text-xs uppercase tracking-widest font-bold border border-surface-border dark:border-charcoal hover:border-gold hover:text-gold text-text-primary px-8 py-4 rounded-xl flex flex-row items-center justify-center gap-3 hover:-translate-y-1 hover:bg-gold/5 transition-all duration-300 ease-out bg-surface/80 dark:bg-deep-onyx/80 backdrop-blur-sm shadow-sm"
                 >
-                  My Tech Matrix
+                  My Tech Stack
                   <svg
                     className="w-4 h-4"
                     fill="none"
@@ -256,7 +255,7 @@ const socialMediaList = [
 
 const quickStatsList = [
   {
-    message: "Python & ML Comprehensive Specialist",
+    message: "Python & Machine Learning",
     icon: (
       <svg
         className="w-5 h-5"
@@ -274,7 +273,7 @@ const quickStatsList = [
     ),
   },
   {
-    message: "Autonomous Agentic AI & RAG Architect",
+    message: "Autonomous AI Agents",
     icon: (
       <svg
         className="w-5 h-5"
@@ -292,7 +291,7 @@ const quickStatsList = [
     ),
   },
   {
-    message: "Production API & M-Pesa Integrator",
+    message: "WhatsApp & M-Pesa Integrations",
     icon: (
       <svg
         className="w-5 h-5"
@@ -310,7 +309,7 @@ const quickStatsList = [
     ),
   },
   {
-    message: "Cloud & Local Inference (Ollama / vLLM)",
+    message: "Local & Cloud Model Serving",
     icon: (
       <svg
         className="w-5 h-5"
