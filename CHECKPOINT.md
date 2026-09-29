@@ -23,9 +23,8 @@
   - **GitHub:** [https://github.com/kelly26ici](https://github.com/kelly26ici)
   - **Portfolio Repo:** [https://github.com/kelly26ici/portfolio](https://github.com/kelly26ici/portfolio)
   - **WhatsApp:** `+254 794 582 488` ([wa.me/254794582488](https://wa.me/254794582488))
-  - **Telegram:** `@Lucifers_cousin` ([t.me/Lucifers_cousin](https://t.me/Lucifers_cousin))
-  - **Telegram Bot Highlight:** `@jbee_vector1_bot` ([t.me/jbee_vector1_bot](https://t.me/jbee_vector1_bot))
   - **Email:** `rexk638@gmail.com`
+  - **Telegram Note:** Kelly does NOT have or use personal Telegram for communication. Do NOT include Telegram as a contact method anywhere.
   - **Live Domain:** `https://rexkelly.co.ke`
 
 ---
@@ -124,28 +123,66 @@
 - Mobile menu drawer refactored to translucent frosted glass with backdrop blur (`bg-surface/75 dark:bg-deep-onyx/75 backdrop-blur-2xl border-surface-border/60 dark:border-gold/30 shadow-[0_16px_40px_rgba(0,0,0,0.7)]`).
 - Added Telegram quick link button in header and mobile drawer. Committed in `b3a711a`.
 
-### Step 3: Uncomment and Activate Telegram Links [COMPLETED]
-- Active personal Telegram (`https://t.me/Lucifers_cousin`) and bot project (`@jbee_vector1_bot`) verified and highlighted across Header, Hero, Footer, and Contact.
+### Step 3: Telegram Contact Removal [COMPLETED]
+- Completely removed all personal Telegram contact links (`@Lucifers_cousin`) across `components/Header.tsx`, `app/hero.tsx`, `components/Footer.tsx`, `app/contact.tsx`, and `app/api/chat/route.ts`.
+- Kelly does NOT use Telegram for direct contact. Only WhatsApp (`+254 794 582 488`) and Email (`rexk638@gmail.com`) are active contact channels.
+- The `TelePulse AI` project remains in the portfolio purely as an engineering demonstration of Telegram Bot API webhooks and backend automation.
 
 ### Step 4: Refactor Tech Stack Section (`app/tech-stack.tsx`) [COMPLETED]
 - Replaced the 8 massive vertical blocks with an interactive tab selector (AI & Agents, Machine Learning & Python, Vector DBs & Memory, APIs & Integrations).
-- Added real SVG logos for Python, PyTorch, LangChain, Docker, FastAPI, and more.
-- Added a plain-English surface-level explainer contrasting **Basic Chatbots vs. Autonomous AI Agents**. Committed in `54ea656`.
+- Downloaded and linked 24 real, full-color official brand SVG logos in `/public/icons/` (Python, PyTorch, TensorFlow, Scikit-learn, LangChain, LangGraph, OpenAI, Claude, Hugging Face, Qdrant, Redis, PostgreSQL, Supabase, FastAPI, M-Pesa, WhatsApp, Docker, Next.js, etc.).
+- Added an approachable surface-level explainer contrasting **Basic Chatbots vs. Autonomous AI Agents**. Committed in `2c35f62`.
 
 ### Step 5: Refactor Engineering Experience Section (`app/experience.tsx`) [COMPLETED]
 - Replaced long vertical scroll blocks with an interactive, space-efficient accordion dropdown.
-- Users can click any role to expand details. Plain English explanations without enterprise buzzwords. Committed in `54ea656`.
+- Users can tap any role to expand details. Plain English explanations without enterprise buzzwords or dashes.
 
 ### Step 6: Simplify Tone & Remove Jargon Across All Pages [COMPLETED]
-- `app/hero.tsx`: Conversational greeting, humble student & builder persona, eliminated dashes and corporate jargon. Committed in `8208476`.
-- `app/about.tsx`: Grounded narrative focusing on computer science studies at Mama Ngina / Kenyatta University + late-night self-learning in Nairobi. Committed in `a387929`.
-- `app/project.tsx`: Relatable project descriptions (Samantha, OmniAgent, CortexRAG, TelePulse, DarajaPay, LocalLLM Nexus) without jargon or dashes. Committed in `ad6d741`.
-- `app/contact.tsx` & `app/api/chat/route.ts`: Friendly contact prompts and authentic AI assistant knowledge base. Committed in `559a824`.
+- `app/hero.tsx`: Conversational greeting, humble student & builder persona, eliminated dashes and corporate jargon.
+- `app/about.tsx`: Grounded narrative focusing on computer science studies at Mama Ngina / Kenyatta University + late-night self-learning in Nairobi.
+- `app/project.tsx`: Relatable project descriptions (Samantha, OmniAgent, CortexRAG, TelePulse, DarajaPay, LocalLLM Nexus) without jargon or dashes.
+- `app/contact.tsx` & `app/api/chat/route.ts`: Friendly contact prompts and authentic AI assistant knowledge base.
 
-### Step 7: Build Verification & Fresh Deploy Zip [COMPLETED]
-- Ran full production build (`npm run build`) &rarr; **Compiled successfully in 23.9s with 0 errors**.
+### Step 7: Build Verification & Deploy Bundle [COMPLETED]
+- Ran full production build (`npm run build`) &rarr; **Compiled successfully with 0 errors**.
 - Packaged complete self-contained standalone bundle into `portfolio-deploy.zip` (24 MB).
 - Automatically copied to phone storage:
   - `/sdcard/Download/portfolio-deploy.zip`
   - `/sdcard/portfolio-deploy.zip`
   - `/data/data/com.termux/files/home/portfolio-deploy.zip`
+
+---
+
+## 6. How to Resume Work on Laptop (Guide for Next AI Session)
+
+When the user clones this repository onto their laptop and launches an AI coding assistant, follow these exact steps:
+
+1. **Clone & Install:**
+   ```bash
+   git clone https://github.com/kelly26ici/portfolio.git
+   cd portfolio
+   npm install
+   ```
+2. **Run Local Development Server:**
+   ```bash
+   npm run dev
+   # or test the production standalone server:
+   npm run build && PORT=3000 node server.js
+   ```
+3. **Core Principles to Always Respect:**
+   - **Persona:** Kelly is a Computer Science student at Mama Ngina University College / Kenyatta University in Nairobi, Kenya. He is an avid self-learner and builder.
+   - **Tone:** Humble ("usijisifu sana"), practical, conversational, no corporate buzzwords, and **NO dashes (`—`)**.
+   - **Contact Channels:** ONLY WhatsApp (`+254 794 582 488`) and Email (`rexk638@gmail.com`). Do NOT re-add Telegram as a contact method.
+   - **Logos:** All 24 technologies in `app/tech-stack.tsx` use real color SVG logos located in `public/icons/`.
+4. **Deploying to cPanel from Laptop:**
+   - HostKenya shared hosting has strict memory limits, so `npm run build` must run locally on the laptop, NOT on cPanel.
+   - Run `npm run build`.
+   - Copy assets into standalone:
+     ```bash
+     cp -r public .next/standalone/public
+     cp -r .next/static .next/standalone/.next/static
+     cp app.js .next/standalone/app.js
+     mkdir -p .next/standalone/tmp && date +%s > .next/standalone/tmp/restart.txt
+     cd .next/standalone && zip -r -q ../portfolio-deploy.zip .
+     ```
+   - On cPanel File Manager: wipe `/home/rexkelly/portfolio/*` (to prevent quota errors), upload `portfolio-deploy.zip`, extract it inside `/home/rexkelly/portfolio/`, and click **Restart** under **Setup Node.js App**.

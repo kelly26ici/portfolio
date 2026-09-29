@@ -32,14 +32,6 @@ export default function Footer() {
             WhatsApp
           </a>
           <a
-            href="https://t.me/Lucifers_cousin"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-messapia text-text-secondary hover:text-gold transition-colors text-xs font-semibold uppercase tracking-widest"
-          >
-            Telegram
-          </a>
-          <a
             href="mailto:rexk638@gmail.com"
             target="_blank"
             rel="noopener noreferrer"

@@ -19,7 +19,6 @@ Core Facts About Kelly:
 - GitHub: https://github.com/kelly26ici
 - Portfolio Repository: https://github.com/kelly26ici/portfolio
 - WhatsApp: +254 794 582 488 (https://wa.me/254794582488)
-- Telegram: @Lucifers_cousin (https://t.me/Lucifers_cousin)
 - Email: rexk638@gmail.com
 - Academic: Studying Computer Science at Mama Ngina University College / Kenyatta University (Graduation 2029), combined with continuous hands-on self learning.
 `
@@ -40,14 +39,14 @@ function generateSimulatedResponse(question: string): string {
   }
 
   if (q.includes("contact") || q.includes("hire") || q.includes("email") || q.includes("reach") || q.includes("location") || q.includes("kenya")) {
-    return "### 📬 Connecting with Kelly\n\nKelly is based in **Nairobi, Kenya** (UTC+3) and is open to freelance projects, collaborations, and contract roles.\n\n- **GitHub:** [github.com/kelly26ici](https://github.com/kelly26ici)\n- **WhatsApp:** [+254 794 582 488](https://wa.me/254794582488)\n- **Telegram:** [@Lucifers_cousin](https://t.me/Lucifers_cousin)\n- **Direct Email:** [rexk638@gmail.com](mailto:rexk638@gmail.com)\n\nFeel free to send a message anytime!"
+    return "### 📬 Connecting with Kelly\n\nKelly is based in **Nairobi, Kenya** (UTC+3) and is open to freelance projects, collaborations, and contract roles.\n\n- **GitHub:** [github.com/kelly26ici](https://github.com/kelly26ici)\n- **WhatsApp:** [+254 794 582 488](https://wa.me/254794582488)\n- **Direct Email:** [rexk638@gmail.com](mailto:rexk638@gmail.com)\n\nFeel free to send a message anytime!"
   }
 
   if (q.includes("education") || q.includes("student") || q.includes("university") || q.includes("degree")) {
     return "Kelly is a **Computer Science student at Mama Ngina University College / Kenyatta University** (graduating around 2029). While school gives him strong foundations in algorithms and system architecture, he is passionate about self-learning, building practical open-source tools, and solving real problems with software."
   }
 
-  return "Thanks for asking! Kelly is a computer science student and builder in Nairobi, Kenya. He builds practical AI tools, autonomous agents, and real-world software integrations like WhatsApp property assistants and M-Pesa payments.\n\nYou can ask me about:\n- **Projects** (Samantha, OmniAgent, CortexRAG, TelePulse, DarajaPay)\n- **Technologies** (Python, LangGraph, Qdrant, FastAPI, PyTorch)\n- **How to Connect** (WhatsApp, Telegram, or Email)\n\nHow can I help you today?"
+  return "Thanks for asking! Kelly is a computer science student and builder in Nairobi, Kenya. He builds practical AI tools, autonomous agents, and real-world software integrations like WhatsApp property assistants and M-Pesa payments.\n\nYou can ask me about:\n- **Projects** (Samantha, OmniAgent, CortexRAG, TelePulse, DarajaPay)\n- **Technologies** (Python, LangGraph, Qdrant, FastAPI, PyTorch)\n- **How to Connect** (WhatsApp or Email)\n\nHow can I help you today?"
 }
 
 export async function POST(req: NextRequest) {

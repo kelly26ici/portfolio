@@ -152,7 +152,7 @@ export default function Contact() {
         {
           id: (Date.now() + 1).toString(),
           sender: "bot",
-          text: "I encountered a network or server issue. Feel free to connect directly with Kelly via WhatsApp (+254 794 582 488) or Telegram (@Lucifers_cousin)!",
+          text: "I encountered a network or server issue. Feel free to connect directly with Kelly via WhatsApp (+254 794 582 488) or Email (rexk638@gmail.com)!",
           timestamp: new Date(),
         },
       ])
@@ -224,7 +224,7 @@ export default function Contact() {
                   </div>
                   <div className="flex items-center justify-between text-xs font-messapia">
                     <span className="text-text-secondary">Primary Platforms</span>
-                    <span className="font-coconat text-text-primary font-bold">GitHub • WhatsApp • Telegram • Email</span>
+                    <span className="font-coconat text-text-primary font-bold">GitHub • WhatsApp • Email</span>
                   </div>
                 </div>
               </div>
@@ -290,30 +290,6 @@ export default function Contact() {
                   <h4 className="font-ortica text-lg font-bold text-text-primary mb-1">WhatsApp</h4>
                   <p className="font-coconat text-xs font-bold text-gold">+254 794 582 488</p>
                   <p className="font-forum text-xs text-text-muted mt-1">Direct instant messaging & quick inquiries</p>
-                </div>
-              </a>
-
-              {/* Telegram */}
-              <a
-                href="https://t.me/Lucifers_cousin"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group bg-surface dark:bg-deep-onyx border border-surface-border dark:border-charcoal rounded-2xl p-6 flex flex-col justify-between hover:border-gold hover:shadow-[0_8px_25px_rgba(212,175,55,0.15)] transition-all duration-300 shadow-sm"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center text-gold group-hover:scale-110 transition-transform duration-300">
-                    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.939z" />
-                    </svg>
-                  </div>
-                  <span className="text-text-secondary group-hover:text-gold group-hover:translate-x-1 transition-all">
-                    &rarr;
-                  </span>
-                </div>
-                <div>
-                  <h4 className="font-ortica text-lg font-bold text-text-primary mb-1">Telegram</h4>
-                  <p className="font-coconat text-xs font-bold text-gold">@Lucifers_cousin</p>
-                  <p className="font-forum text-xs text-text-muted mt-1">Direct messaging &amp; bot engineering</p>
                 </div>
               </a>
 
