@@ -135,8 +135,8 @@
 
 ### Step 5: Refactor Engineering Experience Section (`app/experience.tsx`) [COMPLETED]
 - Replaced the multiple roles with **Samantha only** as Kelly's sole primary real-world experience, starting in **2026 to now**.
-- Each technology pill in the Samantha experience card features a real brand SVG logo (`w-4 h-4`, ~1cm height) next to the label (Python, LangGraph, LangChain, Qdrant, Redis, FastAPI, WhatsApp API, M-Pesa, Supabase, PostgreSQL, OpenAI, Docker).
-- Added key architecture highlights (Platform, Payment, Memory, Orchestration) and GitHub repository link. Committed in `b3cfd18`.
+- Streamlined to a concise, compact single-card layout without redundant blocks (removed the Platform/Payment/Memory/Orchestration grid and the tech tags).
+- Kept the direct GitHub repository link and plain-English narrative of how Samantha works. Committed in `9ac0e2b`.
 
 ### Step 6: Refactor Hero 3D Badges & Explainer Visuals [COMPLETED]
 - `app/hero.tsx`: Replaced generic SVG placeholders in the 4 floating engineering badges below the 3D neural canvas with real stacked brand logos (Python+PyTorch+TensorFlow, LangChain+LangGraph+OpenAI, WhatsApp+M-Pesa+FastAPI, Ollama+Hugging Face+Docker).
