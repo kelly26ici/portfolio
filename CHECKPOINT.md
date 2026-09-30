@@ -134,14 +134,13 @@
 - Added an approachable surface-level explainer contrasting **Basic Chatbots vs. Autonomous AI Agents**. Committed in `2c35f62`.
 
 ### Step 5: Refactor Engineering Experience Section (`app/experience.tsx`) [COMPLETED]
-- Replaced long vertical scroll blocks with an interactive, space-efficient accordion dropdown.
-- Users can tap any role to expand details. Plain English explanations without enterprise buzzwords or dashes.
+- Replaced the multiple roles with **Samantha only** as Kelly's sole primary real-world experience, starting in **2026 to now**.
+- Each technology pill in the Samantha experience card features a real brand SVG logo (`w-4 h-4`, ~1cm height) next to the label (Python, LangGraph, LangChain, Qdrant, Redis, FastAPI, WhatsApp API, M-Pesa, Supabase, PostgreSQL, OpenAI, Docker).
+- Added key architecture highlights (Platform, Payment, Memory, Orchestration) and GitHub repository link. Committed in `b3cfd18`.
 
-### Step 6: Simplify Tone & Remove Jargon Across All Pages [COMPLETED]
-- `app/hero.tsx`: Conversational greeting, humble student & builder persona, eliminated dashes and corporate jargon.
-- `app/about.tsx`: Grounded narrative focusing on computer science studies at Mama Ngina / Kenyatta University + late-night self-learning in Nairobi.
-- `app/project.tsx`: Relatable project descriptions (Samantha, OmniAgent, CortexRAG, TelePulse, DarajaPay, LocalLLM Nexus) without jargon or dashes.
-- `app/contact.tsx` & `app/api/chat/route.ts`: Friendly contact prompts and authentic AI assistant knowledge base.
+### Step 6: Refactor Hero 3D Badges & Explainer Visuals [COMPLETED]
+- `app/hero.tsx`: Replaced generic SVG placeholders in the 4 floating engineering badges below the 3D neural canvas with real stacked brand logos (Python+PyTorch+TensorFlow, LangChain+LangGraph+OpenAI, WhatsApp+M-Pesa+FastAPI, Ollama+Hugging Face+Docker).
+- `app/tech-stack.tsx`: Replaced emoji placeholders (💬 and ⚡) in the Plain English Breakdown card with clean, professional SVG outline icons. Committed in `b3cfd18`.
 
 ### Step 7: Build Verification & Deploy Bundle [COMPLETED]
 - Ran full production build (`npm run build`) &rarr; **Compiled successfully with 0 errors**.
