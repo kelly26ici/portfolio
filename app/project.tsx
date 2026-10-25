@@ -33,15 +33,15 @@ export default function Project() {
             <div className="flex items-center gap-2.5 mb-3">
               <span className="w-2.5 h-2.5 rounded-full bg-gold shadow-[0_0_8px_#D4AF37]"></span>
               <h2 className="font-coconat text-xs font-bold tracking-[0.25em] text-gold uppercase">
-                Production Systems & Solutions
+                Real Projects I Built
               </h2>
             </div>
             <h3 className="font-cinzel text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary tracking-tight">
-              My Featured Projects
+              Featured Projects
             </h3>
             <p className="font-forum text-text-secondary text-base md:text-lg max-w-3xl mt-4 font-normal leading-relaxed">
-              A selection of production-grade AI systems, multi-agent architectures, RAG pipelines,
-              and real-world API & payment integrations that I have engineered for clients and enterprise deployments.
+              Here are some of the AI tools, assistants, and software integrations I have built.
+              I focus on practical projects that solve everyday problems rather than toy demos.
             </p>
           </div>
         </FadeDown>
@@ -385,121 +385,121 @@ const projectList = [
     index: 0,
     title: "Samantha: WhatsApp AI Real Estate Assistant",
     category: "Conversational Agent & Integrations",
-    badge: "Flagship Public Project",
+    badge: "Flagship Project",
     accentGradient: "bg-gradient-to-br from-[#0F0F0F] via-[#0A3D82]/40 to-[#2C2C2C]",
     shortDescription:
-      "I engineered Samantha as an autonomous WhatsApp real estate assistant built on WhatsApp Cloud API, combining property discovery, vector semantic search, customer conversational memory, and automated M-Pesa payments.",
+      "An AI assistant on WhatsApp that helps people find rental houses and apartments in Kenya. It remembers user preferences, answers questions about listings, and can trigger M-Pesa payments.",
     longDescription:
-      "I built Samantha to bridge conversational AI with practical real-estate business operations in Kenya. Operating natively inside WhatsApp, my system allows prospective buyers and renters to discover properties using natural language queries, compare amenities across multiple listings, maintain multi-turn customer memory, and complete reservation fee transactions directly via Safaricom M-Pesa STK push.",
+      "I built Samantha to make finding a house easier and faster. Instead of calling back and forth with brokers, clients message Samantha directly on WhatsApp just like a friend. It searches through verified property listings using vector search, answers questions about rent and amenities, and allows clients to pay small viewing or reservation fees directly through Safaricom M-Pesa.",
     deployment: "Production / WhatsApp Cloud API",
     features: [
-      "Semantic property discovery using Qdrant vector embeddings for natural query matching",
-      "Dynamic side-by-side property comparison and preference filtering in conversational flow",
-      "Persistent user context & conversational state tracking stored in Redis and Supabase",
-      "Automated Safaricom M-Pesa / Daraja payment STK push integration with instant receipt validation",
-      "Webhook architecture translating conversational bookings into business CRM lead tasks",
+      "Natural language property discovery using Qdrant vector search to match real buyer needs",
+      "Side by side property comparisons and amenity filtering inside WhatsApp chat",
+      "Persistent customer memory stored in Redis and Supabase so users never have to repeat themselves",
+      "Automated Safaricom M-Pesa STK push payment integration with instant receipt validation",
+      "Instant notification webhooks that alert property owners of new inquiries",
     ],
-    tech: ["Python", "WhatsApp Cloud API", "LangChain/LangGraph", "Qdrant", "Safaricom M-Pesa", "Supabase", "Redis", "FastAPI"],
+    tech: ["Python", "WhatsApp Cloud API", "LangGraph", "Qdrant", "Safaricom M-Pesa", "Supabase", "FastAPI"],
     githubUrl: "https://github.com/kelly26ici/portfolio",
   },
   {
     index: 1,
-    title: "OmniAgent: Multi-Agent Workflow Engine",
-    category: "Agentic Systems & Automation",
-    badge: "Enterprise Orchestrator",
+    title: "OmniAgent: Multi-Agent Task Engine",
+    category: "Autonomous Systems",
+    badge: "Agent Orchestration",
     accentGradient: "bg-gradient-to-br from-[#0A3D82]/50 via-[#0F0F0F] to-[#2C2C2C]",
     shortDescription:
-      "I architected this autonomous multi-agent orchestration platform utilizing LangGraph cyclic state machines, dynamic tool calling, and human-in-the-loop governance for enterprise workflows.",
+      "A system where specialized AI agents collaborate to finish multi-step projects. One agent gathers information, another writes code, and another checks for mistakes before giving you the final result.",
     longDescription:
-      "I designed and implemented OmniAgent as an enterprise-ready agentic orchestration system to automate multi-stage operations. It breaks complex organizational objectives into recursive sub-tasks managed by specialized worker agents (researcher, data analyst, code evaluator, and synthesizer) with deterministic checkpoints and state rollback.",
+      "When a single AI prompt tries to do everything at once, it often gets confused or makes up facts. I designed OmniAgent using LangGraph so tasks are divided among specialized agents with clear roles. For critical actions like updating user balances or deleting files, the system pauses and asks a human for approval first.",
     deployment: "Dockerized / FastAPI Microservices",
     features: [
-      "Cyclic multi-agent graph orchestration built on LangGraph and Python async primitives",
-      "Tool calling with structured schema validation across databases, search APIs, and internal microservices",
-      "Human-in-the-loop review boundaries for sensitive financial and operational execution",
-      "Durable Redis state checkpointing allowing interrupted workflows to resume seamlessly",
+      "Cyclic agent graph built with LangGraph for multi-step reasoning and self correction",
+      "Structured tool use across databases, external search APIs, and local scripts",
+      "Human in the loop safety checkpoints for sensitive operations",
+      "Durable Redis session state so interrupted tasks can resume seamlessly",
     ],
     tech: ["Python", "LangGraph", "FastAPI", "Anthropic Claude", "OpenAI", "Redis", "Docker"],
     githubUrl: "https://github.com/kelly26ici/portfolio",
   },
   {
     index: 2,
-    title: "CortexRAG: Hybrid Semantic Retrieval Engine",
+    title: "CortexRAG: Accurate Document Search Engine",
     category: "Information Retrieval & RAG",
-    badge: "High-Throughput RAG",
+    badge: "Fact-Checked Search",
     accentGradient: "bg-gradient-to-br from-[#2C2C2C] via-[#0A3D82]/30 to-[#0F0F0F]",
     shortDescription:
-      "I developed this production-grade hybrid semantic search and RAG engine combining dense vector embeddings, sparse BM25, cross-encoder reranking, and citation attribution.",
+      "A fast document search engine that lets teams ask questions about internal manuals and guides. Every answer cites the exact page reference so the AI never hallucinates.",
     longDescription:
-      "I engineered CortexRAG for enterprise knowledge retrieval across millions of dense technical documents. It combines sparse lexical search with dense vector embeddings in Qdrant and Pinecone, applying cross-encoder rerankers to achieve superior top-1 precision while verifying citations to eliminate hallucination.",
-    deployment: "Production Cluster / Kubernetes Ready",
+      "I built CortexRAG to solve the problem of AI making up fake information. It reads company documents, indexes them into a vector database, and finds the exact paragraph needed to answer a user question. Every answer includes verifiable references to the original document.",
+    deployment: "Production Cluster / Docker Ready",
     features: [
-      "Hybrid dense-sparse retrieval combining vector similarity with BM25 lexical relevance",
-      "Cross-encoder reranking stage (Cohere / BGE-reranker) delivering <80ms top-5 precision",
-      "Cryptographic citation attribution mapping generated sentences to verified source chunks",
-      "High-concurrency streaming REST API built with FastAPI and asynchronous workers",
+      "Hybrid search combining vector similarity with exact keyword matching",
+      "Reranking stage that ensures the top answers are the most accurate and relevant",
+      "Clear source attribution showing users the exact document and section used",
+      "Fast streaming REST API built with Python and FastAPI",
     ],
-    tech: ["PyTorch", "Hugging Face", "Qdrant", "Pinecone", "FAISS", "FastAPI", "Docker"],
+    tech: ["Python", "PyTorch", "Qdrant", "Pinecone", "FAISS", "FastAPI", "Docker"],
     githubUrl: "https://github.com/kelly26ici/portfolio",
   },
   {
     index: 3,
-    title: "TelePulse AI: Telegram Operations & Automation Bot",
+    title: "TelePulse AI: Automated Telegram Operations Bot",
     category: "Automation & Bot Engineering",
-    badge: "Bot & Ops Engineering",
+    badge: "Telegram Bot",
     accentGradient: "bg-gradient-to-br from-[#0F0F0F] via-[#0A3D82]/50 to-[#2C2C2C]",
     shortDescription:
-      "I engineered this high-throughput automated Telegram bot with Python and the Telegram Bot API for real-time customer triage, database query execution, and operations.",
+      "A Telegram bot that handles customer queries and automates database checks in real time. Built with Python and running live on Telegram.",
     longDescription:
-      "I built this high-concurrency Telegram automation system handling continuous user interactions and automated tasks. It processes incoming messages via webhooks, executes natural language database queries, routes complex operational tickets, and streams analytics in real time.",
-    deployment: "Production / Telegram Bot API (@jbee_vector1_bot)",
+      "I built TelePulse to help teams manage customer requests and routine tasks directly inside Telegram. It listens for incoming messages, runs secure database queries, and gives instant replies using fast AI inference.",
+    deployment: "Live on Telegram (@jbee_vector1_bot)",
     features: [
-      "Asynchronous webhook processing pipeline supporting high message throughput with zero drop",
-      "Integrated Groq and Google Gemini inference for near-instant conversational responses",
-      "Direct database query generation and transactional execution with strict safety boundaries",
-      "Automated community moderation, alert dispatching, and scheduled broadcast messaging",
+      "Fast webhook processing pipeline supporting high message volume",
+      "Integrated Groq and Google Gemini inference for quick conversational replies",
+      "Direct database query generation with strict safety boundaries",
+      "Automated alerts and scheduled broadcast messages to community channels",
     ],
-    tech: ["Python", "Telegram Bot API", "Groq", "Google Gemini", "Redis Streams", "PostgreSQL"],
+    tech: ["Python", "Telegram Bot API", "Groq", "Google Gemini", "Redis", "PostgreSQL"],
     githubUrl: "https://t.me/jbee_vector1_bot",
   },
   {
     index: 4,
-    title: "DarajaPay AI: M-Pesa Reconciliation & Anomaly Engine",
+    title: "DarajaPay AI: M-Pesa Payment & Verification System",
     category: "Fintech & Integrations",
-    badge: "Fintech Gateway",
+    badge: "Payment Gateway",
     accentGradient: "bg-gradient-to-br from-[#0F0F0F] via-[#2C2C2C] to-[#0A3D82]/40",
     shortDescription:
-      "I engineered this automated fintech gateway integrating Safaricom M-Pesa (Daraja API) with machine learning anomaly detection to streamline payment reconciliation and fraud alerts.",
+      "An automated gateway that listens for Safaricom M-Pesa payments, updates customer accounts immediately, and flags duplicate or suspicious transactions.",
     longDescription:
-      "I engineered DarajaPay to solve payment reconciliation friction for businesses across Kenya. The system handles C2B, B2C, and STK Push endpoints on the Daraja API, pairing transactional webhooks with machine learning models trained in scikit-learn to spot anomalous transaction patterns and duplicate attempts in real time.",
-    deployment: "Serverless & Containerized Gateway",
+      "Managing mobile money payments manually is slow and prone to errors. I built DarajaPay using the Safaricom Daraja API to automatically handle STK push prompts, verify payments in real time, and run simple machine learning checks to catch double payments or fraudulent attempts.",
+    deployment: "FastAPI Gateway Service",
     features: [
-      "Seamless integration with Safaricom Daraja API for automated STK push and C2B transaction confirmation",
-      "Scikit-learn isolation forests and XGBoost models detecting velocity anomalies and fraud signatures",
-      "Instant multi-tenant ledger settlement with cryptographic webhook callbacks to client applications",
-      "Comprehensive audit trail with PostgreSQL and Redis caching for sub-second verification",
+      "Smooth integration with Safaricom Daraja API for STK push and C2B transaction confirmation",
+      "Machine learning models in scikit-learn to spot unusual payment velocity and duplicate transactions",
+      "Instant webhook callbacks that notify client apps the moment a payment clears",
+      "Clear audit logs stored in PostgreSQL and cached in Redis for fast verification",
     ],
-    tech: ["Python", "FastAPI", "scikit-learn", "XGBoost", "Safaricom Daraja API", "PostgreSQL", "Supabase"],
+    tech: ["Python", "FastAPI", "scikit-learn", "Safaricom Daraja API", "PostgreSQL", "Supabase"],
     githubUrl: "https://github.com/kelly26ici/portfolio",
   },
   {
     index: 5,
-    title: "LocalLLM Nexus: Air-Gapped Model Serving Suite",
+    title: "LocalLLM Nexus: Private Offline AI Suite",
     category: "Model Serving & Edge AI",
-    badge: "Privacy & Local AI",
+    badge: "Private Offline AI",
     accentGradient: "bg-gradient-to-br from-[#1C1C1C] via-[#0F0F0F] to-[#0A3D82]/30",
     shortDescription:
-      "I designed and deployed this self-hosted, air-gapped LLM inference and serving environment optimizing quantized models (GGUF/AWQ) on local compute with OpenAI-compatible API endpoints.",
+      "A setup for running modern AI models completely offline on a local computer. Data never leaves your machine, making it private and free from cloud fees.",
     longDescription:
-      "I built LocalLLM Nexus for clients requiring absolute data privacy and zero cloud dependencies. It packages llama.cpp, Ollama, and vLLM runtimes into optimized Docker containers, serving quantized models locally with high token throughput, memory-efficient KV caching, and local vector search.",
-    deployment: "On-Premises / Air-Gapped Linux",
+      "Many businesses cannot send their private documents to external cloud APIs. I configured LocalLLM Nexus using open-source tools like Ollama and llama.cpp so anyone can run capable AI models directly on their own hardware with zero internet connection required.",
+    deployment: "On Premises / Offline Linux",
     features: [
-      "Zero-external-egress architecture ensuring complete client data confidentiality",
-      "High-throughput inference utilizing PagedAttention with vLLM and quantized GGUF models",
-      "Drop-in OpenAI-compatible streaming API for effortless integration into existing software",
-      "Local vector embeddings and retrieval with Chroma and FAISS running entirely offline",
+      "Completely offline architecture keeping all sensitive data private",
+      "Fast local inference using quantized GGUF models on standard consumer hardware",
+      "OpenAI compatible API format for drop in replacement in existing software",
+      "Local vector search with Chroma and FAISS running entirely without the internet",
     ],
-    tech: ["Ollama", "llama.cpp", "vLLM", "Python", "Chroma", "FAISS", "Docker", "Linux"],
+    tech: ["Ollama", "llama.cpp", "vLLM", "Python", "Chroma", "FAISS", "Docker"],
     githubUrl: "https://github.com/kelly26ici/portfolio",
   },
 ]

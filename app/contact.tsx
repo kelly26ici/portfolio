@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect, useCallback, useRef } from "react"
+import { useState, useEffect, useRef } from "react"
 import AlertMessage from "@/components/Alert"
 import FadeDown from "@/components/animations/FadeDown"
 import ReactMarkdown from "react-markdown"
@@ -38,7 +38,7 @@ export default function Contact() {
     if (savedMessages) {
       try {
         const parsed = JSON.parse(savedMessages)
-        const formattedMessages = parsed.map((msg: any) => ({
+        const formattedMessages = parsed.map((msg: ChatMessage) => ({
           ...msg,
           timestamp: new Date(msg.timestamp),
         }))
@@ -152,7 +152,7 @@ export default function Contact() {
         {
           id: (Date.now() + 1).toString(),
           sender: "bot",
-          text: "I encountered a network or server issue. Feel free to connect directly with Kelly via WhatsApp (+254 794 582 488) or Telegram (@Lucifers_cousin)!",
+          text: "I encountered a network or server issue. Feel free to connect directly with Kelly via WhatsApp (+254 794 582 488) or Email (rexk638@gmail.com)!",
           timestamp: new Date(),
         },
       ])
@@ -178,8 +178,8 @@ export default function Contact() {
             Let&apos;s Build Together
           </h3>
           <p className="font-forum text-text-secondary text-base md:text-lg max-w-2xl mt-4 font-normal leading-relaxed">
-            Interested in deploying production AI systems, autonomous agentic workflows,
-            RAG pipelines, or API integrations? Reach out directly or start a conversation with my interactive AI assistant.
+            Interested in building an AI project, a WhatsApp assistant, or an API integration?
+            Feel free to reach out directly or test my interactive AI assistant.
           </p>
         </div>
       </FadeDown>
@@ -197,7 +197,7 @@ export default function Contact() {
                 <div className="flex items-center gap-2 mb-4">
                   <span className="w-2.5 h-2.5 rounded-full bg-gold shadow-[0_0_8px_#D4AF37] animate-pulse"></span>
                   <span className="font-coconat text-xs font-bold text-gold uppercase tracking-widest">
-                    Location & Timezone
+                    Location &amp; Availability
                   </span>
                 </div>
 
@@ -205,12 +205,12 @@ export default function Contact() {
                   Nairobi, Kenya
                 </h4>
                 <p className="font-messapia text-xs text-text-muted mb-6 uppercase tracking-wider">
-                  East Africa Time (EAT • UTC+3) • Open to Global Remote Work
+                  East Africa Time (EAT • UTC+3) • Open to Remote Projects
                 </p>
 
                 <p className="font-forum text-sm md:text-base text-text-secondary font-normal leading-relaxed mb-6">
-                  I am available for consulting, full-time engineering roles, contract work,
-                  and client deployments of custom AI agents, vector search, and API integrations.
+                  I am open to freelance client projects, contract roles, and building useful tools.
+                  Whether you have an existing system to integrate or a new project idea, let us connect.
                 </p>
 
                 <div className="p-4 rounded-2xl bg-surface-raised dark:bg-charcoal/30 border border-surface-border dark:border-charcoal space-y-2.5 mb-6">
@@ -224,7 +224,7 @@ export default function Contact() {
                   </div>
                   <div className="flex items-center justify-between text-xs font-messapia">
                     <span className="text-text-secondary">Primary Platforms</span>
-                    <span className="font-coconat text-text-primary font-bold">GitHub • WhatsApp • Telegram • Email</span>
+                    <span className="font-coconat text-text-primary font-bold">GitHub • WhatsApp • Email</span>
                   </div>
                 </div>
               </div>
@@ -290,30 +290,6 @@ export default function Contact() {
                   <h4 className="font-ortica text-lg font-bold text-text-primary mb-1">WhatsApp</h4>
                   <p className="font-coconat text-xs font-bold text-gold">+254 794 582 488</p>
                   <p className="font-forum text-xs text-text-muted mt-1">Direct instant messaging & quick inquiries</p>
-                </div>
-              </a>
-
-              {/* Telegram */}
-              <a
-                href="https://t.me/Lucifers_cousin"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group bg-surface dark:bg-deep-onyx border border-surface-border dark:border-charcoal rounded-2xl p-6 flex flex-col justify-between hover:border-gold hover:shadow-[0_8px_25px_rgba(212,175,55,0.15)] transition-all duration-300 shadow-sm"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center text-gold group-hover:scale-110 transition-transform duration-300">
-                    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.939z" />
-                    </svg>
-                  </div>
-                  <span className="text-text-secondary group-hover:text-gold group-hover:translate-x-1 transition-all">
-                    &rarr;
-                  </span>
-                </div>
-                <div>
-                  <h4 className="font-ortica text-lg font-bold text-text-primary mb-1">Telegram</h4>
-                  <p className="font-coconat text-xs font-bold text-gold">@Lucifers_cousin</p>
-                  <p className="font-forum text-xs text-text-muted mt-1">Direct messaging &amp; bot engineering</p>
                 </div>
               </a>
 
@@ -444,11 +420,11 @@ export default function Contact() {
                         <ReactMarkdown
                           remarkPlugins={[remarkGfm]}
                           components={{
-                            p: ({ node, ...props }) => <p className="mb-2 last:mb-0" {...props} />,
-                            strong: ({ node, ...props }) => (
+                            p: ({ ...props }) => <p className="mb-2 last:mb-0" {...props} />,
+                            strong: ({ ...props }) => (
                               <strong className="font-bold text-text-primary" {...props} />
                             ),
-                            a: ({ node, ...props }) => (
+                            a: ({ ...props }) => (
                               <a
                                 className="text-gold underline hover:opacity-80 font-bold"
                                 target="_blank"

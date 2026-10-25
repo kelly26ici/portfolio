@@ -27,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
-      # ── 4. Build Next.js (needs RAM — done here, NOT on the server) ────────
+      # ── 4. Build Next.js ───────────────────────────────────────────────────
       - name: Build Next.js application
         run: npm run build
         env:
@@ -35,43 +35,42 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
 
-      # ── 5. Prune to production deps only (smaller upload) ─────────────────
-      - name: Prune to production dependencies
-        run: npm prune --production --legacy-peer-deps
+      # ── 5. Clean up node_modules & cache to ensure lightning fast FTP ──────
+      - name: Clean up heavy non-production files
+        run: |
+          rm -rf node_modules
+          rm -rf .next/cache
+          mkdir -p tmp
+          touch tmp/restart.txt
 
-      # ── 6. FTP Deploy — uploads everything including pre-built .next/ ──────
-      #
-      #  The server NEVER needs to run `npm run build` — the built .next/
-      #  folder is uploaded here. Server only runs `next start` via server.js.
-      #
-      #  Add these 3 secrets in GitHub → Settings → Secrets → Actions:
-      #    FTP_HOST      → HostKenya FTP hostname (e.g. ftp.yoursite.com)
-      #    FTP_USERNAME  → your cPanel username  (rexkelly)
-      #    FTP_PASSWORD  → your cPanel password
-      # ────────────────────────────────────────────────────────────────────────
-      - name: Deploy via FTP to /portfolio directory
+      # ── 6. FTP Deploy ──────────────────────────────────────────────────────
+      - name: Deploy via FTP to portfolio directory
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./
-          server-dir: /portfolio/
+          server-dir: portfolio/
+          log-level: verbose
           exclude: |
             **/.git*
             **/.git*/**
             **/node_modules/**
+            **/.agent/**
+            **/.github/**
             **/coverage/**
             **/*.log
-            **/tmp/**
+            **/README.md
+            **/CHECKPOINT.md
 
       # ── 7. Summary ─────────────────────────────────────────────────────────
       - name: Deployment summary
         run: |
           echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
           echo "✅  Build + Deploy complete"
-          echo "    .next/ folder uploaded — server runs next start"
+          echo "    Pre-built .next/, server.js, app.js deployed"
+          echo "    Passenger restart triggered via tmp/restart.txt"
           echo "    Commit : ${{ github.sha }}"
           echo "    Branch : ${{ github.ref_name }}"
-          echo "    Actor  : ${{ github.actor }}"
           echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
