@@ -1,75 +1,68 @@
-// server.js — cPanel Node.js App entry point
-const { createServer } = require('http')
-const { parse } = require('url')
+// server.js — cPanel Node.js App entry point (standalone output mode)
+// Next.js output: "standalone" bundles all deps into .next/standalone/
+// so no node_modules/ required on the server.
+
+'use strict'
+
 const fs = require('fs')
 const path = require('path')
+const http = require('http')
+
+process.env.NODE_ENV = 'production'
 
 const port = process.env.PORT || process.env.APPLICATION_PORT || 3000
+process.env.PORT = String(port)
+process.env.HOSTNAME = '0.0.0.0'
 
-// Verify if .next build directory exists
+const standaloneServer = path.join(__dirname, '.next', 'standalone', 'server.js')
 const nextDir = path.join(__dirname, '.next')
-const hasBuild = fs.existsSync(nextDir)
 
-let nextApp = null
-let nextHandler = null
-let preparePromise = null
+// ── Standalone mode (preferred) ─────────────────────────────────────────────
+if (fs.existsSync(standaloneServer)) {
+  console.log('> [server.js] Booting via .next/standalone/server.js')
+  require(standaloneServer)
 
-if (hasBuild) {
+// ── .next exists but no standalone — legacy fallback ────────────────────────
+} else if (fs.existsSync(nextDir)) {
+  console.warn('> [server.js] Standalone bundle missing; falling back to require("next")')
   try {
     const next = require('next')
-    const dev = process.env.NODE_ENV !== 'production'
-    nextApp = next({ dev, dir: __dirname })
-    nextHandler = nextApp.getRequestHandler()
-    preparePromise = nextApp.prepare().catch((err) => {
-      console.error('Next.js preparation error:', err)
-      return err
+    const { parse } = require('url')
+    const app = next({ dev: false, dir: __dirname })
+    const handle = app.getRequestHandler()
+
+    app.prepare().then(() => {
+      http.createServer((req, res) => {
+        handle(req, res, parse(req.url, true))
+      }).listen(port, '0.0.0.0', () => {
+        console.log(`> [server.js] Fallback server listening on port ${port}`)
+      })
+    }).catch((err) => {
+      console.error('> [server.js] Next.js prepare() failed:', err)
+      process.exit(1)
     })
   } catch (err) {
-    console.error('Error initializing Next.js:', err)
+    console.error('> [server.js] require("next") failed:', err)
+    process.exit(1)
   }
+
+// ── No build found — show friendly status page ───────────────────────────────
+} else {
+  console.warn('> [server.js] No .next build found — serving status page')
+  http.createServer((req, res) => {
+    res.statusCode = 200
+    res.setHeader('Content-Type', 'text/html; charset=utf-8')
+    res.end(`<!DOCTYPE html>
+<html>
+<head><title>Kelly Portfolio — Deploying</title></head>
+<body style="font-family:system-ui,sans-serif;padding:60px;background:#0f0f0f;color:#d4af37;text-align:center;">
+  <h1 style="font-size:2rem;letter-spacing:1px;">Kelly Portfolio</h1>
+  <p style="color:#f3e5ab;margin-top:16px;">Deployment in progress — the build is uploading now.</p>
+  <p style="color:#888;font-size:0.9rem;">Refresh in ~30 seconds once GitHub Actions completes.</p>
+</body>
+</html>`)
+  }).listen(port, '0.0.0.0', () => {
+    console.log(`> [server.js] Status-page server listening on port ${port}`)
+  })
 }
 
-// Start HTTP server synchronously so Passenger immediately connects
-const server = createServer(async (req, res) => {
-  try {
-    if (!hasBuild || !nextApp) {
-      res.statusCode = 200
-      res.setHeader('Content-Type', 'text/html; charset=utf-8')
-      return res.end(`
-        <!DOCTYPE html>
-        <html>
-        <head><title>Kelly Portfolio — Deploying</title></head>
-        <body style="font-family:system-ui,sans-serif;padding:50px;background:#0f0f0f;color:#d4af37;text-align:center;">
-          <h1 style="font-size:2rem;letter-spacing:1px;">Kelly Portfolio — Initializing</h1>
-          <p style="color:#f3e5ab;margin-top:16px;">The <code>.next</code> build folder is currently uploading or waiting to be deployed.</p>
-          <p style="color:#888;font-size:0.9rem;">Once the GitHub Actions deployment finishes, refresh this page.</p>
-        </body>
-        </html>
-      `)
-    }
-
-    const prepResult = await preparePromise
-    if (prepResult instanceof Error) {
-      res.statusCode = 500
-      res.setHeader('Content-Type', 'text/html; charset=utf-8')
-      return res.end(`
-        <div style="font-family:monospace;padding:24px;background:#1a1a1a;color:#ff6b6b;">
-          <h2>Next.js Startup Error</h2>
-          <pre>${prepResult.stack || prepResult.message}</pre>
-        </div>
-      `)
-    }
-
-    const parsedUrl = parse(req.url, true)
-    await nextHandler(req, res, parsedUrl)
-  } catch (err) {
-    console.error('Request handler error:', err)
-    res.statusCode = 500
-    res.setHeader('Content-Type', 'text/html; charset=utf-8')
-    res.end(`<div style="font-family:monospace;padding:24px;"><pre>${err.stack || err}</pre></div>`)
-  }
-})
-
-server.listen(port, () => {
-  console.log(`> Kelly Portfolio server listening on port ${port}`)
-})

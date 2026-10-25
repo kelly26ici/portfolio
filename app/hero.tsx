@@ -11,10 +11,10 @@ export default function Hero() {
 
   const texts = useMemo(
     () => [
-      "AI & Machine Learning Engineer",
-      "Agentic Systems Architect",
-      "LLM & RAG Systems Developer",
-      "Backend & Integrations Specialist",
+      "Computer Science Student",
+      "Autonomous AI Agent Developer",
+      "Python & Backend Builder",
+      "Lifelong Self-Learner",
     ],
     []
   )
@@ -66,7 +66,7 @@ export default function Hero() {
               <div className="flex flex-wrap items-center gap-3 mb-2">
                 <span className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-gold/10 border border-gold/30 text-gold-hover dark:text-gold rounded-full font-coconat text-[11px] font-bold tracking-widest uppercase">
                   <span className="w-2 h-2 rounded-full bg-gold shadow-[0_0_8px_#D4AF37] animate-pulse"></span>
-                  Nairobi, Kenya • Available for Production AI Engineering
+                  Nairobi, Kenya • Student &amp; AI Builder
                 </span>
               </div>
 
@@ -90,10 +90,9 @@ export default function Hero() {
 
               <div className="max-w-xl mt-3">
                 <p className="font-forum text-text-secondary text-base md:text-lg leading-relaxed font-normal">
-                  I engineer practical, production-grade AI systems, autonomous agents,
-                  and real-world software integrations. Rather than isolated chatbots, I build
-                  systems where state-of-the-art models connect directly with data, vector memory,
-                  tools, APIs, databases, and business operations.
+                  I am a computer science student and self taught builder in Nairobi.
+                  I create practical AI tools and autonomous agents that do real work,
+                  from helpful WhatsApp property assistants to automated payment systems.
                 </p>
               </div>
 
@@ -127,7 +126,7 @@ export default function Hero() {
                   onClick={() => handleScroll("techstack")}
                   className="cursor-pointer font-coconat text-xs uppercase tracking-widest font-bold border border-surface-border dark:border-charcoal hover:border-gold hover:text-gold text-text-primary px-8 py-4 rounded-xl flex flex-row items-center justify-center gap-3 hover:-translate-y-1 hover:bg-gold/5 transition-all duration-300 ease-out bg-surface/80 dark:bg-deep-onyx/80 backdrop-blur-sm shadow-sm"
                 >
-                  My Tech Matrix
+                  My Tech Stack
                   <svg
                     className="w-4 h-4"
                     fill="none"
@@ -196,10 +195,23 @@ export default function Hero() {
                 {quickStatsList.map((stat, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-3 bg-surface/90 dark:bg-deep-onyx/90 backdrop-blur-md border border-surface-border dark:border-charcoal p-3.5 rounded-xl shadow-sm hover:border-gold/40 transition-all duration-300"
+                    className="flex items-center gap-3 bg-surface/90 dark:bg-deep-onyx/90 backdrop-blur-md border border-surface-border dark:border-charcoal p-3 rounded-xl shadow-sm hover:border-gold/40 transition-all duration-300"
                   >
-                    <div className="bg-gold/10 text-gold-hover dark:text-gold p-2.5 rounded-lg flex-shrink-0">
-                      {stat.icon}
+                    {/* 3 real brand logos stacked side by side */}
+                    <div className="flex items-center gap-1 shrink-0">
+                      {stat.icons.map((src, j) => (
+                        <div
+                          key={j}
+                          className="w-6 h-6 rounded-md bg-surface-raised dark:bg-charcoal/60 border border-surface-border/50 flex items-center justify-center p-0.5"
+                        >
+                          <img
+                            src={src}
+                            alt=""
+                            className="w-4 h-4 object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                      ))}
                     </div>
                     <span className="font-forum text-xs font-semibold text-text-primary leading-tight">
                       {stat.message}
@@ -235,15 +247,6 @@ const socialMediaList = [
     ),
   },
   {
-    title: "Telegram (@Lucifers_cousin)",
-    href: "https://t.me/Lucifers_cousin",
-    icon: (
-      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.939z" />
-      </svg>
-    ),
-  },
-  {
     title: "Email (rexk638@gmail.com)",
     href: "mailto:rexk638@gmail.com",
     icon: (
@@ -256,75 +259,19 @@ const socialMediaList = [
 
 const quickStatsList = [
   {
-    message: "Python & ML Comprehensive Specialist",
-    icon: (
-      <svg
-        className="w-5 h-5"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
-        />
-      </svg>
-    ),
+    message: "Python & Machine Learning",
+    icons: ["/icons/python.svg", "/icons/pytorch.svg", "/icons/tensorflow.svg"],
   },
   {
-    message: "Autonomous Agentic AI & RAG Architect",
-    icon: (
-      <svg
-        className="w-5 h-5"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="M13 10V3L4 14h7v7l9-11h-7z"
-        />
-      </svg>
-    ),
+    message: "Autonomous AI Agents",
+    icons: ["/icons/langchain.svg", "/icons/langgraph.svg", "/icons/openai.svg"],
   },
   {
-    message: "Production API & M-Pesa Integrator",
-    icon: (
-      <svg
-        className="w-5 h-5"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
-        />
-      </svg>
-    ),
+    message: "WhatsApp & M-Pesa Integrations",
+    icons: ["/icons/whatsapp.svg", "/icons/mpesa.svg", "/icons/fastapi.svg"],
   },
   {
-    message: "Cloud & Local Inference (Ollama / vLLM)",
-    icon: (
-      <svg
-        className="w-5 h-5"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
-        />
-      </svg>
-    ),
+    message: "Local & Cloud Model Serving",
+    icons: ["/icons/ollama.svg", "/icons/huggingface.svg", "/icons/docker.svg"],
   },
 ]
