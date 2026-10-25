@@ -19,6 +19,7 @@ export default function Header() {
   }
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true)
 
     const savedTheme = typeof window !== "undefined" ? localStorage.getItem("theme") : null
@@ -100,7 +101,7 @@ export default function Header() {
               })}
             </nav>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               {/* Theme Toggle */}
               <button
                 className="cursor-pointer text-text-secondary hover:text-gold transition-colors duration-200 p-1.5 rounded-full hover:bg-gold/10"
@@ -130,9 +131,9 @@ export default function Header() {
               </button>
             </div>
 
-            {/* Mobile Menu */}
-            <div className={`${isOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"} md:hidden transform absolute top-16 right-4 z-50 origin-top-right transition-all duration-300 ease-in-out`}>
-              <div className="flex flex-col gap-4 bg-surface dark:bg-deep-onyx border border-surface-border dark:border-charcoal p-6 rounded-2xl shadow-2xl w-52">
+            {/* Mobile Menu — Translucent Frosted Glass */}
+            <div className={`${isOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"} lg:hidden transform absolute top-16 right-4 z-50 origin-top-right transition-all duration-300 ease-in-out`}>
+              <div className="flex flex-col gap-3 bg-surface/75 dark:bg-deep-onyx/75 backdrop-blur-2xl border border-surface-border/60 dark:border-gold/30 p-5 rounded-2xl shadow-[0_16px_40px_rgba(0,0,0,0.7)] w-56">
                 {shortCut.map((item, index) => {
                   const isActive = activeSection === item.name.toLowerCase()
                   return (
@@ -140,8 +141,8 @@ export default function Header() {
                       onClick={() => { handleScroll(item.link); setIsOpen(false); }}
                       key={index}
                       className={`
-                        ${isActive ? "text-gold font-bold" : "text-text-secondary font-medium hover:text-gold"}
-                        cursor-pointer font-messapia text-xs uppercase tracking-widest flex items-center gap-2 py-1.5 transition-colors duration-200 text-left
+                        ${isActive ? "text-gold font-bold bg-gold/10" : "text-text-secondary font-medium hover:text-gold hover:bg-gold/5"}
+                        cursor-pointer font-messapia text-xs uppercase tracking-widest flex items-center gap-2 px-3 py-2 rounded-xl transition-all duration-200 text-left
                       `}
                     >
                       {isActive && <span className="w-1.5 h-1.5 rounded-full bg-gold" />}
